@@ -14,17 +14,28 @@ $command = getVar ( "cmd" );
 if (! empty ( $command )) {
 	switch ($command) {
 		case "get_new_tickets" :
-			$array = $ticket->getTickets ("new");
-			echo (json_encode ( $array ));
+			$array = $ticket->getTickets ( "new" );
+			outputJson ( $array );
+			break;
+		
+		case "get_my_tickets" :
+			$username = getPostVar ( "name" );
+			if (! empty ( $username )) {
+				$array = $ticket->getUserTickets ( $username );
+				outputJson ( $array );
+			} else {
+				showError ();
+			}
+			
 			break;
 		
 		case "get_details" :
 			$id = getPostVar ( "id" );
 			if (! empty ( $id )) {
 				$array = $ticket->getTicket ( $id );
-				print_r ( $array );
+				outputJson ( $array );
 			} else {
-				echo ("A required field cannot be empty.");
+				showError ();
 			}
 			break;
 		
@@ -35,17 +46,18 @@ if (! empty ( $command )) {
 			
 			if (! empty ( $creator ) && ! empty ( $description )) {
 				$ticket->createTicket ( $creator, $description, $position );
+				showSuccess ();
 			} else {
-				echo ("A required field cannot be empty.");
+				showError ();
 			}
 			
 			break;
 		
 		default :
-			echo ("A required field cannot be empty.");
+			showError ();
 			break;
 	}
 } else {
-	echo ("A required field cannot be empty.");
+	showError ();
 }
 ?>
