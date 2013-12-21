@@ -18,12 +18,12 @@ function outputJson($data) {
 
 // output the error as a json formatted string
 function showError() {
-	echo (array ("result" => array (),"success" => false 
-	));
+	echo (json_encode ( array ("result" => array (),"success" => false 
+	) ));
 }
 
 // output the success as a json formatted string
 function showSuccess() {
-	echo (array ("result" => array (),"success" => true 
-	));
+	echo (json_encode ( array ("result" => array (),"success" => true 
+	) ));
 }
