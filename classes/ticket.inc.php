@@ -71,10 +71,17 @@ class Ticket {
 	}
 
 	function getTicket($id) {
-		$return = array ();
-		$result = $this->db->querySingle ( 
+		return $this->db->querySingle ( 
 				"SELECT creator, description, position, status, type, notes, create_date, update_date FROM Tickets WHERE id = '$id'", true );
-		
+	}
+
+	function getUserTickets($username) {
+		$return = array ();
+		$result = $this->db->query ( 
+				"SELECT id, creator, description, position, status, type, notes, create_date, update_date FROM Tickets WHERE creator = '$username'" );
+		while ( $row = $result->fetchArray ( SQLITE3_ASSOC ) ) {
+			$return [] = $row;
+		}
 		return $return;
 	}
 }
