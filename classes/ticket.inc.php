@@ -62,8 +62,7 @@ class Ticket {
 
 	function getTickets($status) {
 		$return = array ();
-		$result = $this->db->query ( 
-				"SELECT id, creator, description, position, status, type, notes, create_date, update_date FROM Tickets WHERE status = '$status'" );
+		$result = $this->db->query ( "SELECT id, creator, description, position, status, type, notes FROM Tickets WHERE status = '$status'" );
 		while ( $row = $result->fetchArray ( SQLITE3_ASSOC ) ) {
 			$return [] = $row;
 		}
@@ -71,14 +70,13 @@ class Ticket {
 	}
 
 	function getTicket($id) {
-		return $this->db->querySingle ( 
-				"SELECT creator, description, position, status, type, notes, create_date, update_date FROM Tickets WHERE id = '$id'", true );
+		return $this->db->querySingle ( "SELECT creator, description, position, status, type, notes FROM Tickets WHERE id = '$id'", true );
 	}
-	
+
 	function getUserTickets($username) {
 		$return = array ();
 		$result = $this->db->query ( 
-				"SELECT id, creator, description, position, status, type, notes, create_date, update_date FROM Tickets WHERE creator = '$username' AND status != 'completed'" );
+				"SELECT id, creator, description, position, status, type, notes FROM Tickets WHERE creator = '$username' AND status != 'completed'" );
 		while ( $row = $result->fetchArray ( SQLITE3_ASSOC ) ) {
 			$return [] = $row;
 		}
