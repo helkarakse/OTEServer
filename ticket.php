@@ -4,47 +4,48 @@
  * @author Helkarakse (nimcuron@gmail.com) @version 1.0
  */
 require_once ("./classes/ticket.inc.php");
+require_once ("./classes/common.inc.php");
 
 // Variables
-$ticket = new Ticket ( "./SQLite3Ticket.db" );
-$ticket->initDb ();
+$ticket = new Ticket ();
 
 // Command parser
-if (isset ( $_GET ["cmd"] ) && $_GET ["cmd"] != "") {
-	$cmd = $_GET ["cmd"];
-	
-	switch ($cmd) {
-		case "get_tickets" :
-			$array = $ticket->getTickets ();
-			print_r ( $array );
+$command = getVar ( "cmd" );
+if (! empty ( $command )) {
+	switch ($command) {
+		case "get_new_tickets" :
+			$array = $ticket->getTickets ("new");
+			echo (json_encode ( $array ));
 			break;
 		
 		case "get_details" :
-			$id = isset ( $_POST ["id"] ) ? $_POST ["id"] : "";
+			$id = getPostVar ( "id" );
 			if (! empty ( $id )) {
 				$array = $ticket->getTicket ( $id );
 				print_r ( $array );
 			} else {
-				echo ("No id was provided.");
+				echo ("A required field cannot be empty.");
 			}
 			break;
 		
 		case "add_ticket" :
-			$creator = isset ( $_POST ["creator"] ) ? $_POST ["creator"] : "";
-			$description = isset ( $_POST ["description"] ) ? $_POST ["description"] : "";
-			$position = isset ( $_POST ["position"] ) ? $_POST ["position"] : "";
+			$creator = getPostVar ( "creator" );
+			$description = getPostVar ( "description" );
+			$position = getPostVar ( "position" );
 			
 			if (! empty ( $creator ) && ! empty ( $description )) {
 				$ticket->createTicket ( $creator, $description, $position );
 			} else {
-				echo ("Creator and description fields are mandatory.");
+				echo ("A required field cannot be empty.");
 			}
 			
 			break;
 		
 		default :
-			echo ("Unknown command request.");
+			echo ("A required field cannot be empty.");
 			break;
 	}
+} else {
+	echo ("A required field cannot be empty.");
 }
 ?>
