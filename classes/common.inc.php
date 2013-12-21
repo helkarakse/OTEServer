@@ -13,17 +13,17 @@ function getPostVar($variable) {
 // output the array as a json formatted string
 function outputJson($data) {
 	echo (json_encode ( array ("result" => $data,"success" => true 
-	) ));
+	), JSON_NUMERIC_CHECK ));
 }
 
 // output the error as a json formatted string
 function showError() {
 	echo (json_encode ( array ("result" => array (),"success" => false 
-	) ));
+	), JSON_NUMERIC_CHECK ));
 }
 
 // output the success as a json formatted string
 function showSuccess() {
 	echo (json_encode ( array ("result" => array (),"success" => true 
-	) ));
+	), JSON_NUMERIC_CHECK ));
 }
