@@ -57,7 +57,7 @@ class Ticket {
 		$create_date = date ( 'Y-m-d H:i:s' );
 		return $this->db->exec ( 
 				"INSERT INTO Tickets VALUES(NULL, '$creator', '$description', '$position', 'new', 'mod', '', '$create_date', '$create_date')" ) or
-				 die ( $db->lastErrorMsg () );
+				 die ( $this->db->lastErrorMsg () );
 	}
 
 	function getTickets($status) {
