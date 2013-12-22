@@ -29,6 +29,17 @@ if (! empty ( $command )) {
 			
 			break;
 		
+		case "get_my_ticket_count" :
+			$username = getPostVar ( "name" );
+			if (! empty ( $username )) {
+				$array = $ticket->countUserTickets ( $username );
+				outputJson ( $array );
+			} else {
+				showError ();
+			}
+			
+			break;
+		
 		case "get_details" :
 			$id = getPostVar ( "id" );
 			if (! empty ( $id )) {
