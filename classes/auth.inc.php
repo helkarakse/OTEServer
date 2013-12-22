@@ -35,9 +35,18 @@ class Auth {
 		$result = $this->db->querySingle ( "SELECT name, rank, auth_level FROM Auth WHERE name = '$username'", true );
 		return $result;
 	}
-	
+
+	function getAuthArray() {
+		$return = array ();
+		$result = $this->db->query ( "SELECT name, rank, auth_level FROM Auth" );
+		while ( $row = $result->fetchArray ( SQLITE3_ASSOC ) ) {
+			$return [] = $row;
+		}
+		return $return;
+	}
+
 	function getError() {
-		return $this -> db -> lastErrorMsg();
+		return $this->db->lastErrorMsg ();
 	}
 }
 ?>

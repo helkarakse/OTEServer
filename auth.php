@@ -19,15 +19,20 @@ if (! empty ( $command )) {
 				$auth = $auth->getAuth ( $username );
 				echo ($auth ["auth_level"]);
 			} else {
-				echo ("A required field cannot be empty.");
+				showError ();
 			}
 			break;
 		
+		case "get_auth_array" :
+			$array = $auth->getAuthArray ();
+			outputJson ( $array );
+			break;
+		
 		default :
-			echo ("A required field cannot be empty.");
+			showError ();
 			break;
 	}
 } else {
-	echo ("A required field cannot be empty.");
+	showError ();
 }
 ?>

@@ -30,6 +30,7 @@ class Ticket {
 						description TEXT NOT NULL,
 						position TEXT,
 						status TEXT, 
+						assigned TEXT,
 						type TEXT, 
 						notes TEXT, 
 						create_date DATETIME, 
