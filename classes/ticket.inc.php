@@ -85,7 +85,7 @@ class Ticket {
 
 	function countUserTickets($username) {
 		$return = array ();
-		$result = $this->db->query ( "SELECT status, COUNT(status) FROM Tickets WHERE creator = '$username' GROUP BY status" );
+		$result = $this->db->query ( "SELECT status, COUNT(status) as count FROM Tickets WHERE creator = '$username' GROUP BY status" );
 		while ( $row = $result->fetchArray ( SQLITE3_ASSOC ) ) {
 			$return [] = $row;
 		}
