@@ -61,7 +61,18 @@ if (! empty ( $command )) {
 			} else {
 				showError ();
 			}
-			
+			break;
+		
+		case "get_issues" :
+			$authLevel = getVar ( "auth_level" );
+			if (! empty ( $authLevel )) {
+				$array = $ticket->getIssues ( $authLevel );
+				foreach ( $array as $key => $value ) {
+				}
+				outputJson ( $array );
+			} else {
+				showError ();
+			}
 			break;
 		
 		default :

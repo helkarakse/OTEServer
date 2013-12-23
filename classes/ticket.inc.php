@@ -36,7 +36,9 @@ class Ticket {
 						create_date DATETIME, 
 						update_date DATETIME)" );
 	}
-
+	
+	// Tickets
+	
 	/**
 	 * Creates a new entry in the ticket table
 	 *
@@ -87,6 +89,22 @@ class Ticket {
 	function countUserTickets($username) {
 		$return = array ();
 		$result = $this->db->query ( "SELECT status, COUNT(status) as count FROM Tickets WHERE creator = '$username' GROUP BY status" );
+		while ( $row = $result->fetchArray ( SQLITE3_ASSOC ) ) {
+			$return [] = $row;
+		}
+		return $return;
+	}
+	
+	// Issues
+	function getIssues($authLevel) {
+		$return = array ();
+		// authLevel 1 is mod, which means only mod level tickets are returned
+		if ($authLevel == 1) {
+			$result = $this->db->query ( "SELECT id, creator, create_date FROM Tickets WHERE type = 'mod'" );
+		} elseif ($authLevel == 2) {
+			// authLevel 2 is admin, which means all the tickets are returned
+			$result = $this->db->query ( "SELECT id, creator, create_date FROM Tickets" );
+		}
 		while ( $row = $result->fetchArray ( SQLITE3_ASSOC ) ) {
 			$return [] = $row;
 		}
