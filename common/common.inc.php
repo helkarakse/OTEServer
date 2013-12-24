@@ -102,4 +102,6 @@ function convertTime($array) {
 		unset ( $array [$key] ["update_date"] );
 		$key ++;
 	}
+	
+	return $array;
 }
