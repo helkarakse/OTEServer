@@ -67,13 +67,7 @@ if (! empty ( $command )) {
 			$authLevel = getPostVar ( "auth_level" );
 			if (! empty ( $authLevel )) {
 				$array = $ticket->getIssues ( $authLevel );
-				$key = 0;
-				foreach ( $array as $row ) {
-					$timeAgo = prettyTime ( strtotime ( $row ["create_date"] ) );
-					$array [$key] ["time_ago"] = $timeAgo;
-					unset ( $array [$key] ["create_date"] );
-					$key ++;
-				}
+				$array = convertTime ( $array );
 				
 				outputJson ( $array );
 			} else {
@@ -86,13 +80,20 @@ if (! empty ( $command )) {
 			$status = getPostVar ( "status" );
 			if (! empty ( $authLevel ) && ! empty ( $status )) {
 				$array = $ticket->getIssuesByType ( $authLevel, $status );
-				$key = 0;
-				foreach ( $array as $row ) {
-					$timeAgo = prettyTime ( strtotime ( $row ["create_date"] ) );
-					$array [$key] ["time_ago"] = $timeAgo;
-					unset ( $array [$key] ["create_date"] );
-					$key ++;
-				}
+				$array = convertTime ( $array );
+				
+				outputJson ( $array );
+			} else {
+				showError ();
+			}
+			break;
+		
+		case "get_issue_details" :
+			$authLevel = getPostVar ( "auth_level" );
+			$id = getPostVar ( "id" );
+			if (! empty ( $authLevel ) && ! empty ( $id )) {
+				$array = $ticket->getIssueDetails ( $authLevel, $id );
+				$array = convertTime ( $array );
 				
 				outputJson ( $array );
 			} else {
@@ -111,4 +112,3 @@ if (! empty ( $command )) {
 } else {
 	showError ();
 }
-?>

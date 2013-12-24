@@ -92,3 +92,14 @@ function prettyTime($timestamp) {
 		return $diff == 1 ? $diff . ' year ago' : $diff . ' years ago';
 	}
 }
+
+// changes the time of create_date to time_ago
+function convertTime($array) {
+	$key = 0;
+	foreach ( $array as $row ) {
+		$timeAgo = prettyTime ( strtotime ( $row ["update_date"] ) );
+		$array [$key] ["time_ago"] = $timeAgo;
+		unset ( $array [$key] ["update_date"] );
+		$key ++;
+	}
+}
