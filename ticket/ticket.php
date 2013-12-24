@@ -67,21 +67,27 @@ if (! empty ( $command )) {
 			$authLevel = getPostVar ( "auth_level" );
 			if (! empty ( $authLevel )) {
 				$array = $ticket->getIssues ( $authLevel );
-				foreach ( $array as $key => $value ) {
+				foreach ( $array as $row ) {
+					$row ["time_ago"] = prettyTime ( strtotime ( $row ["create_date"] ) );
 				}
-				outputJson ( $array );
-			} else {
-				showError ();
 			}
-			break;
+			outputJson ( $array );
+	} else 
+	
+	{
+		showError ();
+	}
+	break;
 		
 		case "update_status" :
 			break;
 		
 		default :
-			showError ();
-			break;
-	}
+			
+	
+	showError ();
+	break;
+}
 } else {
 	showError ();
 }
