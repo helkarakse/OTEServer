@@ -98,10 +98,10 @@ class Ticket {
 		$return = array ();
 		// authLevel 1 is mod, which means only mod level tickets are returned
 		if ($authLevel == 1) {
-			$result = $this->db->query ( "SELECT id, creator, create_date FROM Tickets WHERE type = 'mod'" );
+			$result = $this->db->query ( "SELECT id, creator, update_date FROM Tickets WHERE type = 'mod'" );
 		} elseif ($authLevel > 2) {
 			// authLevel 2 is admin, which means all the tickets are returned
-			$result = $this->db->query ( "SELECT id, creator, create_date FROM Tickets" );
+			$result = $this->db->query ( "SELECT id, creator, update_date FROM Tickets" );
 		}
 		while ( $row = $result->fetchArray ( SQLITE3_ASSOC ) ) {
 			$return [] = $row;
@@ -113,10 +113,25 @@ class Ticket {
 		$return = array ();
 		// authLevel 1 is mod, which means only mod level tickets are returned
 		if ($authLevel == 1) {
-			$result = $this->db->query ( "SELECT id, creator, create_date FROM Tickets WHERE type = 'mod' AND status = '$status'" );
+			$result = $this->db->query ( "SELECT id, creator, update_date FROM Tickets WHERE type = 'mod' AND status = '$status'" );
 		} elseif ($authLevel > 2) {
 			// authLevel 2 is admin, which means all the tickets are returned
-			$result = $this->db->query ( "SELECT id, creator, create_date FROM Tickets WHERE status = '$status'" );
+			$result = $this->db->query ( "SELECT id, creator, update_date FROM Tickets WHERE status = '$status'" );
+		}
+		while ( $row = $result->fetchArray ( SQLITE3_ASSOC ) ) {
+			$return [] = $row;
+		}
+		return $return;
+	}
+
+	function getIssueDetails($authLevel, $id) {
+		$return = array ();
+		// authLevel 1 is mod, which means only mod level tickets are returned
+		if ($authLevel == 1) {
+			$result = $this->db->query ( "SELECT id, creator, description, position, status, assigned, type, notes, update_date FROM Tickets WHERE type = 'mod' AND id = '$id'" );
+		} elseif ($authLevel > 2) {
+			// authLevel 2 is admin, which means all the tickets are returned
+			$result = $this->db->query ( "SELECT id, creator, update_date FROM Tickets WHERE id = '$$id'" );
 		}
 		while ( $row = $result->fetchArray ( SQLITE3_ASSOC ) ) {
 			$return [] = $row;
