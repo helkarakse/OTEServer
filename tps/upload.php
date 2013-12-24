@@ -62,7 +62,7 @@ if ($request == "push") {
 		echo ("<div class='tableCSS'>");
 		
 		echo ("<table>");
-		echo ("<tr><td>%</td><td>Time/Tick</td><td>Entity</td></tr>");
+		echo ("<tr><td>%</td><td>Time/Tick</td><td>Chunk Position</td></tr>");
 		foreach ( $chunkArray as $key => $value ) {
 			echo ("<tr>");
 			foreach ( $value as $key => $value ) {
@@ -76,7 +76,7 @@ if ($request == "push") {
 		echo ("<div class='tableCSS'>");
 		
 		echo ("<table>");
-		echo ("<tr><td>%</td><td>Time/Tick</td><td>Entity</td></tr>");
+		echo ("<tr><td>%</td><td>Entity</td><td>Time/Tick</td></tr>");
 		foreach ( $typeArray as $key => $value ) {
 			echo ("<tr>");
 			foreach ( $value as $key => $value ) {
@@ -90,7 +90,7 @@ if ($request == "push") {
 		echo ("<div class='tableCSS'>");
 		
 		echo ("<table>");
-		echo ("<tr><td>%</td><td>Time/Tick</td><td>Entity</td></tr>");
+		echo ("<tr><td>%</td><td>Entity</td><td>Average Calls</td></tr>");
 		foreach ( $callArray as $key => $value ) {
 			echo ("<tr>");
 			foreach ( $value as $key => $value ) {
