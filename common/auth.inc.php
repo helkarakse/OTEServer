@@ -4,7 +4,7 @@
  */
 class Auth {
 	public $db = null;
-	public $databasePath = "./db/AdminTicket.db";
+	public $databasePath = "../db/AdminTicket.db";
 	
 	// Constructor
 	public function __construct() {
