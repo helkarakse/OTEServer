@@ -1,7 +1,6 @@
 <?php
 require_once ("../common/common.inc.php");
 $dimension = getVar ( "server" )
-$date = getVar ( "server" )
 
 if ($dimension != "") {
 	switch ($dimension) {
@@ -43,10 +42,6 @@ if ($dimension != "") {
 		outputEcho ( $tps );
 	} else {
 		print ("Unknown" . "<br />") ;
-	}
-	
-	if (!empty($date) && count ( $array ) > 0) {
-		outputEcho ( $array [5] [0] );
 	}
 } else {
 	echo "Server ID variable required.";
