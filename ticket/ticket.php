@@ -64,7 +64,7 @@ if (! empty ( $command )) {
 			break;
 		
 		case "get_issues" :
-			$authLevel = getVar ( "auth_level" );
+			$authLevel = getPostVar ( "auth_level" );
 			if (! empty ( $authLevel )) {
 				$array = $ticket->getIssues ( $authLevel );
 				foreach ( $array as $key => $value ) {
