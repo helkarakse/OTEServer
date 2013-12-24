@@ -75,6 +75,9 @@ if (! empty ( $command )) {
 			}
 			break;
 		
+		case "update_status" :
+			break;
+		
 		default :
 			showError ();
 			break;
