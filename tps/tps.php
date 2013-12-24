@@ -16,8 +16,8 @@ function printUpdated($array) {
 	}
 }
 
-$dimension = isset ( $_GET ["server"] ) ? $_GET ["server"] : "";
-$date = isset ( $_GET ["date"] ) ? $_GET ["date"] : false;
+$dimension = isset ( getVar ( "server" ) ) ? getVar ( "server" ) : "";
+$date = isset ( getVar ( "date" ) ) ? getVar ( "date" ) : false;
 
 if ($dimension != "") {
 	switch ($dimension) {
@@ -46,7 +46,7 @@ if ($dimension != "") {
 			break;
 	}
 	
-	$handle = fopen ( $filename, "r" ) or die ( "Failed to find required file." );
+	$handle = fopen ( $filename, "r" ) or die ( "0" );
 	$json = fread ( $handle, filesize ( $filename ) );
 	fclose ( $handle );
 	
