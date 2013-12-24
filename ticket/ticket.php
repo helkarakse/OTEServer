@@ -71,6 +71,7 @@ if (! empty ( $command )) {
 				foreach ( $array as $row ) {
 					$timeAgo = prettyTime ( strtotime ( $row ["create_date"] ) );
 					$array [$key] ["time_ago"] = $timeAgo;
+					unset ( $array [$key] ["create_date"] );
 					$key ++;
 				}
 				
