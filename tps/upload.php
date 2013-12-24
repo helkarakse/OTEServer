@@ -4,8 +4,8 @@
  */
 require_once ("../common/common.inc.php");
 
-$file = "tick";
-$fileExt = ".txt";
+$prefix = "tick";
+$extension = ".txt";
 $request = getVar ( "req" );
 
 if ($request == "push") {
@@ -15,24 +15,19 @@ if ($request == "push") {
 	$array [5] ["updated"] = date ( "r", time () );
 	$text = stripslashes ( json_encode ( $array ) );
 	
-	$dim = $_GET ["dim"];
-	$fileName = $file . "-" . $dim . $fileExt;
-	$handle = fopen ( $fileName, "w" ) or die ( "Error: Could not open the file for writing." );
-	fwrite ( $handle, $text );
-	fclose ( $handle );
+	$dimension = getVar ( "dim" );
+	$filename = $prefix . "-" . $dimension . $extension;
+	fileWrite ( $filename, $text );
 	
-	echo ("Updated at: " . date ( "r", time () ));
+	outputEcho ( "Updated at: " . date ( "r", time () ) );
 } else if ($request == "show") {
-	$dim = getVar ( "dim" );
-	$fileName = $file . "-" . $dim . $fileExt;
+	$dimension = getVar ( "dim" );
+	$filename = $prefix . "-" . $dimension . $extension;
 	
-	$handle = fopen ( $fileName, "r" );
-	$data = fread ( $handle, filesize ( $fileName ) );
-	fclose ( $handle );
+	$data = fileRead ( $filename );
 	
 	if (getVar ( "output" ) == "json") {
-		header ( "Content-type: application/json" );
-		echo ($data);
+		outputJson ( $data );
 	} else {
 		$array = json_decode ( $data, true );
 		echo ("<p>TPS: " . round ( ( float ) $array [0] ["TPS"], 2 ) . "</p>");
