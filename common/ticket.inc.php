@@ -131,7 +131,7 @@ class Ticket {
 			$result = $this->db->query ( "SELECT id, creator, description, position, status, assigned, type, notes, update_date FROM Tickets WHERE type = 'mod' AND id = '$id'" );
 		} elseif ($authLevel > 2) {
 			// authLevel 2 is admin, which means all the tickets are returned
-			$result = $this->db->query ( "SELECT id, creator, update_date FROM Tickets WHERE id = '$$id'" );
+			$result = $this->db->query ( "SELECT id, creator, description, position, status, assigned, type, notes, update_date FROM Tickets WHERE id = '$id'" );
 		}
 		while ( $row = $result->fetchArray ( SQLITE3_ASSOC ) ) {
 			$return [] = $row;
