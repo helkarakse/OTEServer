@@ -1,4 +1,5 @@
 <?php
+require_once ("../common/common.inc.php");
 $dimension = isset ( getVar ( "server" ) ) ? getVar ( "server" ) : "";
 $date = isset ( getVar ( "date" ) ) ? getVar ( "date" ) : false;
 
