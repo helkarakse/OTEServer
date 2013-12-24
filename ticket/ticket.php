@@ -81,6 +81,25 @@ if (! empty ( $command )) {
 			}
 			break;
 		
+		case "get_issues_by_type" :
+			$authLevel = getPostVar ( "auth_level" );
+			$status = getPostVar ( "status" );
+			if (! empty ( $authLevel ) && ! empty ( $status )) {
+				$array = $ticket->getIssuesByType ( $authLevel, $status );
+				$key = 0;
+				foreach ( $array as $row ) {
+					$timeAgo = prettyTime ( strtotime ( $row ["create_date"] ) );
+					$array [$key] ["time_ago"] = $timeAgo;
+					unset ( $array [$key] ["create_date"] );
+					$key ++;
+				}
+				
+				outputJson ( $array );
+			} else {
+				showError ();
+			}
+			break;
+		
 		case "update_status" :
 			break;
 		

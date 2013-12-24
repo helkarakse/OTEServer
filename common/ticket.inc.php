@@ -108,5 +108,20 @@ class Ticket {
 		}
 		return $return;
 	}
+
+	function getIssuesByType($authLevel, $status) {
+		$return = array ();
+		// authLevel 1 is mod, which means only mod level tickets are returned
+		if ($authLevel == 1) {
+			$result = $this->db->query ( "SELECT id, creator, create_date FROM Tickets WHERE type = 'mod' AND status = '$status'" );
+		} elseif ($authLevel > 2) {
+			// authLevel 2 is admin, which means all the tickets are returned
+			$result = $this->db->query ( "SELECT id, creator, create_date FROM Tickets WHERE status = '$status'" );
+		}
+		while ( $row = $result->fetchArray ( SQLITE3_ASSOC ) ) {
+			$return [] = $row;
+		}
+		return $return;
+	}
 }
 ?>
