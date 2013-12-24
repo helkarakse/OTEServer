@@ -105,3 +105,15 @@ function convertTime($array) {
 	
 	return $array;
 }
+
+// function roundPos($array) {
+// 	$key = 0;
+// 	foreach ( $array as $row ) {
+// 		$timeAgo = prettyTime ( strtotime ( $row ["update_date"] ) );
+// 		$array [$key] ["time_ago"] = $timeAgo;
+// 		unset ( $array [$key] ["update_date"] );
+// 		$key ++;
+// 	}
+	
+// 	return $array;
+// }

@@ -94,6 +94,7 @@ if (! empty ( $command )) {
 			if (! empty ( $authLevel ) && ! empty ( $id )) {
 				$array = $ticket->getIssueDetails ( $authLevel, $id );
 				$array = convertTime ( $array );
+				// $array = roundPos($array);
 				
 				outputJson ( $array );
 			} else {
