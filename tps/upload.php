@@ -27,7 +27,7 @@ if ($request == "push") {
 	$data = fileRead ( $filename );
 	
 	if (getVar ( "output" ) == "json") {
-		outputJson ( $data );
+		outputEcho ( $data );
 	} else {
 		$array = json_decode ( $data, true );
 		echo ("<p>TPS: " . round ( ( float ) $array [0] ["TPS"], 2 ) . "</p>");
