@@ -1,7 +1,7 @@
 <?php
 require_once ("../common/common.inc.php");
-$dimension = isset ( getVar ( "server" ) ) ? getVar ( "server" ) : "";
-$date = isset ( getVar ( "date" ) ) ? getVar ( "date" ) : false;
+$dimension = getVar ( "server" )
+$date = getVar ( "server" )
 
 if ($dimension != "") {
 	switch ($dimension) {
@@ -30,9 +30,7 @@ if ($dimension != "") {
 			break;
 	}
 	
-	$handle = fopen ( $filename, "r" ) or die ( "0" );
-	$json = fread ( $handle, filesize ( $filename ) );
-	fclose ( $handle );
+	$json = fileRead($filename);
 	
 	$array = ($json != "") ? json_decode ( $json ) : array ();
 	
@@ -47,7 +45,7 @@ if ($dimension != "") {
 		print ("Unknown" . "<br />") ;
 	}
 	
-	if ($date == true && count ( $array ) > 0) {
+	if (!empty($date) && count ( $array ) > 0) {
 		outputEcho ( $array [5] [0] );
 	}
 } else {
