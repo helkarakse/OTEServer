@@ -1,21 +1,4 @@
 <?php
-
-function printTps($array) {
-	foreach ( $array as $key => $value ) {
-		$tps = round ( ( float ) $value, 2 );
-		if ($tps > 20) {
-			$tps = "20.00";
-		}
-		print ($tps . "<br />") ;
-	}
-}
-
-function printUpdated($array) {
-	foreach ( $array as $key => $value ) {
-		print ($value . "<br />") ;
-	}
-}
-
 $dimension = isset ( getVar ( "server" ) ) ? getVar ( "server" ) : "";
 $date = isset ( getVar ( "date" ) ) ? getVar ( "date" ) : false;
 
@@ -52,12 +35,20 @@ if ($dimension != "") {
 	
 	$array = ($json != "") ? json_decode ( $json ) : array ();
 	
-	(count ( $array ) > 0) ? printTps ( $array [0] ) : print ("Unknown" . "<br />") ;
+	if (! empty ( $array )) {
+		$tps = round ( ( float ) $array [0] [0], 2 );
+		if ($tps > 20) {
+			$tps = "20.00";
+		}
+		
+		outputEcho ( $tps );
+	} else {
+		print ("Unknown" . "<br />") ;
+	}
 	
 	if ($date == true && count ( $array ) > 0) {
-		printUpdated ( $array [5] );
+		outputEcho ( $array [5] [0] );
 	}
 } else {
 	echo "Server ID variable required.";
 }
-?>
