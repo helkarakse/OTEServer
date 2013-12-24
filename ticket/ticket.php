@@ -67,8 +67,11 @@ if (! empty ( $command )) {
 			$authLevel = getPostVar ( "auth_level" );
 			if (! empty ( $authLevel )) {
 				$array = $ticket->getIssues ( $authLevel );
+				$key = 0;
 				foreach ( $array as $row ) {
-					$row ["time_ago"] = prettyTime ( strtotime ( $row ["create_date"] ) );
+					$timeAgo = prettyTime ( strtotime ( $row ["create_date"] ) );
+					$array [$key] ["time_ago"] = $timeAgo;
+					$key ++;
 				}
 				
 				outputJson ( $array );
