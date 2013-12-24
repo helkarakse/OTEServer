@@ -44,6 +44,7 @@ if ($request == "push") {
 <body>
 		<?php
 		echo ("<p>TPS: " . round ( ( float ) $array [0] ["TPS"], 2 ) . "</p>");
+		
 		echo ("<div class='tableCSS'>");
 		
 		echo ("<table>");
@@ -51,11 +52,49 @@ if ($request == "push") {
 		foreach ( $entityArray as $key => $value ) {
 			echo ("<tr>");
 			foreach ( $value as $key => $value ) {
-				if ($key == "Single Entity") {
-					echo ("<td>$value</td>");
-				} else {
-					echo ("<td>$value</td>");
-				}
+				echo ("<td>$value</td>");
+			}
+			echo ("</tr>");
+		}
+		echo ("</table>");
+		echo ("</div>");
+		
+		echo ("<div class='tableCSS'>");
+		
+		echo ("<table>");
+		echo ("<tr><td>%</td><td>Time/Tick</td><td>Entity</td></tr>");
+		foreach ( $chunkArray as $key => $value ) {
+			echo ("<tr>");
+			foreach ( $value as $key => $value ) {
+				echo ("<td>$value</td>");
+			}
+			echo ("</tr>");
+		}
+		echo ("</table>");
+		echo ("</div>");
+		
+		echo ("<div class='tableCSS'>");
+		
+		echo ("<table>");
+		echo ("<tr><td>%</td><td>Time/Tick</td><td>Entity</td></tr>");
+		foreach ( $typeArray as $key => $value ) {
+			echo ("<tr>");
+			foreach ( $value as $key => $value ) {
+				echo ("<td>$value</td>");
+			}
+			echo ("</tr>");
+		}
+		echo ("</table>");
+		echo ("</div>");
+		
+		echo ("<div class='tableCSS'>");
+		
+		echo ("<table>");
+		echo ("<tr><td>%</td><td>Time/Tick</td><td>Entity</td></tr>");
+		foreach ( $callArray as $key => $value ) {
+			echo ("<tr>");
+			foreach ( $value as $key => $value ) {
+				echo ("<td>$value</td>");
 			}
 			echo ("</tr>");
 		}
