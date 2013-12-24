@@ -30,15 +30,26 @@ if ($request == "push") {
 		outputEcho ( $data );
 	} else {
 		$array = json_decode ( $data, true );
-		echo ("<p>TPS: " . round ( ( float ) $array [0] ["TPS"], 2 ) . "</p>");
-		
 		$entityArray = $array [1];
 		$chunkArray = $array [2];
 		$typeArray = $array [3];
 		$callArray = $array [4];
+		?>
+<!DOCTYPE unspecified PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>TPS Data</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+		<?php
+		echo ("<p>TPS: " . round ( ( float ) $array [0] ["TPS"], 2 ) . "</p>");
+		echo ("<div class='tableCSS'>")
 		
-		echo ("<table border='1'>");
-		echo ("<tr><th>%</th><th>Time/Tick</th><th>Entity</th></tr>");
+		
+		
+		echo ("<table>");
+		echo ("<tr><td>%</td><td>Time/Tick</td><td>Entity</td></tr>");
 		foreach ( $entityArray as $key => $value ) {
 			echo ("<tr>");
 			foreach ( $value as $key => $value ) {
@@ -51,6 +62,10 @@ if ($request == "push") {
 			echo ("</tr>");
 		}
 		echo ("</table>");
+		echo ("</div>");
+		?>
+		</body>
+</html>
+<?php
 	}
 }
-?>
