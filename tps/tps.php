@@ -30,13 +30,14 @@ if ($dimension != "") {
 	}
 	
 	$json = fileRead($filename);
-	
 	$array = ($json != "") ? json_decode ( $json ) : array ();
 	
 	if (! empty ( $array )) {
-		$tps = round ( ( float ) $array [0] [0], 2 );
-		if ($tps > 20) {
-			$tps = "20.00";
+		foreach ($array[0] as $key => $value) {
+			$tps = round ( ( float ) $value, 2 );
+			if ($tps > 20) {
+				$tps = "20.00";
+			}
 		}
 		
 		outputEcho ( $tps );
