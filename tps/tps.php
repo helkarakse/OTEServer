@@ -1,6 +1,6 @@
 <?php
 require_once ("../common/common.inc.php");
-$dimension = getVar ( "server" )
+$dimension = getVar ( "server" );
 
 if ($dimension != "") {
 	switch ($dimension) {
