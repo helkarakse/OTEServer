@@ -70,24 +70,21 @@ if (! empty ( $command )) {
 				foreach ( $array as $row ) {
 					$row ["time_ago"] = prettyTime ( strtotime ( $row ["create_date"] ) );
 				}
+				
+				outputJson ( $array );
+			} else {
+				showError ();
 			}
-			outputJson ( $array );
-	} else 
-	
-	{
-		showError ();
-	}
-	break;
+			break;
 		
 		case "update_status" :
 			break;
 		
 		default :
 			
-	
-	showError ();
-	break;
-}
+			showError ();
+			break;
+	}
 } else {
 	showError ();
 }
