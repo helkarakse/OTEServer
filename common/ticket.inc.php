@@ -99,7 +99,7 @@ class Ticket {
 		// authLevel 1 is mod, which means only mod level tickets are returned
 		if ($authLevel == 1) {
 			$result = $this->db->query ( "SELECT id, creator, create_date FROM Tickets WHERE type = 'mod'" );
-		} elseif ($authLevel == 2) {
+		} elseif ($authLevel > 2) {
 			// authLevel 2 is admin, which means all the tickets are returned
 			$result = $this->db->query ( "SELECT id, creator, create_date FROM Tickets" );
 		}
