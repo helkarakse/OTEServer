@@ -44,9 +44,7 @@ if ($request == "push") {
 <body>
 		<?php
 		echo ("<p>TPS: " . round ( ( float ) $array [0] ["TPS"], 2 ) . "</p>");
-		echo ("<div class='tableCSS'>")
-		
-		
+		echo ("<div class='tableCSS'>");
 		
 		echo ("<table>");
 		echo ("<tr><td>%</td><td>Time/Tick</td><td>Entity</td></tr>");
