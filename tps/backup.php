@@ -2,10 +2,11 @@
 /*
  * PHP OTEGlasses Config Backup Handler @author Helkarakse <nimcuron@gmail.com>
  */
-$username = $_GET ["name"];
-$dimension = $_GET ["dim"];
+require_once ("../common/common.inc.php");
+$username = getVar ( "name" );
+$dimension = getVar ( "dim" );
 
-$text = urldecode ( $_POST ["config"] );
+$text = urldecode ( getPostVar ( "config" ) );
 $filename = "./backup/" . $dimension . "-" . $username . ".txt";
 $handle = fopen ( $filename, "w" ) or die ( "Error: Could not open the file for writing." );
 fwrite ( $handle, $text );
