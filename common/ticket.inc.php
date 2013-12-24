@@ -58,8 +58,7 @@ class Ticket {
 		 * Enum for type 1 - mod 2 - admin
 		 */
 		$create_date = date ( 'Y-m-d H:i:s' );
-		return $this->db->exec ( 
-				"INSERT INTO Tickets VALUES(NULL, '$creator', '$description', '$position', 'new', '', mod', '', '$create_date', '$create_date')" ) or
+		return $this->db->exec ( "INSERT INTO Tickets VALUES(NULL, '$creator', '$description', '$position', 'new', '', 'mod', '', '$create_date', '$create_date')" ) or
 				 die ( $this->db->lastErrorMsg () );
 	}
 
@@ -78,8 +77,7 @@ class Ticket {
 
 	function getUserTickets($username) {
 		$return = array ();
-		$result = $this->db->query ( 
-				"SELECT id, creator, description, position, status, type, notes FROM Tickets WHERE creator = '$username' AND status != 'completed'" );
+		$result = $this->db->query ( "SELECT id, creator, description, position, status, type, notes FROM Tickets WHERE creator = '$username' AND status != 'completed'" );
 		while ( $row = $result->fetchArray ( SQLITE3_ASSOC ) ) {
 			$return [] = $row;
 		}
