@@ -3,8 +3,8 @@
  * Ticket.php Script for handling the data driven aspect of the ticket system Requires SQLite3
  * @author Helkarakse (nimcuron@gmail.com) @version 1.0
  */
-require_once ("./classes/ticket.inc.php");
-require_once ("./classes/common.inc.php");
+require_once ("./common/ticket.inc.php");
+require_once ("./common/common.inc.php");
 
 // Variables
 $ticket = new Ticket ();
