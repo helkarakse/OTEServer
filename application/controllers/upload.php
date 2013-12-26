@@ -29,4 +29,13 @@ class Upload extends CI_Controller {
 		
 		echo ("Updated at: " . $timeNow);
 	}
+
+	public function get() {
+		$server = $this->input->get ( "server" );
+		$type = $this->input->get ( "type" );
+		
+		$string = $this->tick->write_tick_data ( $text, $server, $type );
+		
+		echo ($string);
+	}
 }
