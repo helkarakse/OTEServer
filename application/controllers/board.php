@@ -3,32 +3,24 @@ if (! defined ( 'BASEPATH' )) exit ( 'No direct script access allowed' );
 class Board extends CI_Controller {
 	
 	// board/display/server/type
-	public function display($server, $type) {
-		$filename = "";
-		switch ($server) {
-			case "rr" :
-				if ($type == "1") {
-					$filename = "tick-1";
-				} elseif ($type == "2") {
-					$filename = "tick-2";
-				}
-				break;
-			
-			case "ftb" :
-				if ($type == "unleashed") {
-					$filename = "tick-5";
-				}
-				break;
-			
-			default :
-				break;
-		}
+	public function show() {
+		$server = $this->input->get ( "server" );
+		$type = $this->input->get ( "type" );
 		
-		if (! empty ( $filename )) {
-			$string = read_file ( APPPATH . "data/" . $filename . ".txt" );
-			echo $string;
-		} else {
-			show_error ( "Error: Unknown server or type." );
-		}
+		// load the data from file
+		$data = $this->tick->read_tick_data ( $server, $type );
+		$tps = $this->tick->get_tps ( $server, $type );
+		
+		$array = json_decode ( $data, true );
+		$entityArray = $array [1];
+		$chunkArray = $array [2];
+		$typeArray = $array [3];
+		$callArray = $array [4];
+		
+		$data = array (
+			"entities" => $entityArray,"chunks" => $chunkArray,"types" => $typeArray,"calls" => $callArray,"tps" => $tps ["tps"],"last_update" => $tps ["last_update"] 
+		);
+		
+		$this->load->view ( "view_board", $data );
 	}
 }
