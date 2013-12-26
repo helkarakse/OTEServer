@@ -19,7 +19,9 @@ class Upload extends CI_Controller {
 		}
 		
 		$rowId = $this->tick->insert_tps ( $tps, $timeNow, $server, $type );
-		$this->tick->insert_players ( $rowId, $playerArray );
+		if (! empty ( $playerArray )) {
+			$this->tick->insert_players ( $rowId, $playerArray );
+		}
 		
 		// re encode the json
 		$text = stripslashes ( json_encode ( $array ) );
