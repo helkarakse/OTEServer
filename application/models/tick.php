@@ -44,10 +44,12 @@ class Tick extends CI_Model {
 	}
 
 	function insert_players($rowId, $players) {
-		foreach ( $players as $player ) {
-			$this->db->insert ( "TickPlayers", array (
-				"tick_id" => $rowId,"name" => $player 
-			) );
+		if (! empty ( $players )) {
+			foreach ( $players as $player ) {
+				$this->db->insert ( "TickPlayers", array (
+					"tick_id" => $rowId,"name" => $player 
+				) );
+			}
 		}
 	}
 	
