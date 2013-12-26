@@ -34,7 +34,7 @@ class Upload extends CI_Controller {
 		$server = $this->input->get ( "server" );
 		$type = $this->input->get ( "type" );
 		
-		$string = $this->tick->read_tick_data ( $text, $server, $type );
+		$string = $this->tick->read_tick_data ( $server, $type );
 		
 		echo ($string);
 	}
