@@ -1,8 +1,35 @@
+ul {
+	float: left;
+	width: 100%;
+	padding: 0;
+	margin: 0px;
+	margin-bottom: 1em;
+	list-style-type: none;
+	width: 100%;
+	list-style-type: none;
+	margin-bottom: 1em;
+}
+
+a {
+	float: left;
+	width: 6em;
+	text-decoration: none;
+	color: white;
+	background-color: purple;
+	padding: 0.2em 0.6em;
+	border-right: 1px solid white;
+}
+
+a:hover {
+	background-color: #ff3300;
+}
+
+li {
+	display: inline;
+}
+
 .tableCSS {
-	margin-top: 0em;
-	margin-left: 0em;
-	margin-right: 0em;
-	margin-bottom: 2em;
+	margin: 10px 0px 10px;
 	padding: 0px;
 	width: 100%;
 	border: 1px solid #000000;
