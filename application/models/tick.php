@@ -9,6 +9,9 @@ class Tick extends CI_Model {
 	function get_tps($server, $type) {
 		$this->db->select ( "tps, last_update" );
 		$this->db->from ( "TickTps" );
+		$this->db->where ( array (
+			"server" => $server,"type" => $type 
+		) );
 		$this->db->order_by ( "rowid", "desc" );
 		$this->db->limit ( 1 );
 		$query = $this->db->get ();
