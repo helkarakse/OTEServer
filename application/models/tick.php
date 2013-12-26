@@ -7,7 +7,7 @@ class Tick extends CI_Model {
 	
 	// returns the tps data from the db
 	function get_tps($server, $type) {
-		$this->db->select ( "tps", "last_update" );
+		$this->db->select ( "tps, last_update" );
 		$this->db->from ( "TickTps" );
 		$this->db->order_by ( "rowid", "desc" );
 		$this->db->limit ( 1 );
@@ -21,9 +21,13 @@ class Tick extends CI_Model {
 				$tps = "20.00";
 			}
 			
-			return $tps;
+			return array (
+				"tps" => $tps,"last_update" => $row->last_update 
+			);
 		} else {
-			return array ();
+			return array (
+				"tps" => 0,"last_update" => "" 
+			);
 		}
 	}
 	
