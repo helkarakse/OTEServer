@@ -189,6 +189,7 @@ class CI_DB_pdo_driver extends CI_DB {
 	function _execute($sql)
 	{
 		$sql = $this->_prep_query($sql);
+		$this -> conn_id -> setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		$result_id = $this->conn_id->prepare($sql);
 		$result_id->execute();
 		
@@ -210,6 +211,7 @@ class CI_DB_pdo_driver extends CI_DB {
 		}
 		
 		return $result_id;
+	
 	}
 
 	// --------------------------------------------------------------------
