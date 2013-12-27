@@ -29,6 +29,11 @@ class Board extends CI_Controller {
 	public function graph() {
 		$server = $this->input->get ( "server" );
 		$type = $this->input->get ( "type" );
+		$limit = $this->input->get ( "limit" );
+		
+		if (empty ( $limit )) {
+			$limit = FALSE;
+		}
 		
 		$this->load->library ( 'gcharts' );
 		$this->gcharts->load ( 'LineChart' );
@@ -37,7 +42,7 @@ class Board extends CI_Controller {
 		$dataTable->addColumn ( 'number', 'TPS', 'tps' );
 		$dataTable->addColumn ( 'number', 'Player Count', 'playerCount' );
 		
-		$dataArray = $this->tick->get_tick_data ( $server, $type );
+		$dataArray = $this->tick->get_tick_data ( $server, $type, $limit );
 		
 		foreach ( $dataArray as $data ) {
 			$dataTable->addRow ( array (
