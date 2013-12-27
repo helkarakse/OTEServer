@@ -52,8 +52,9 @@
 		function create_ticket($creator, $description, $position) {
 			$timeNow = date('Y-m-d H:i:s');
 			$this->db->insert("TicketIssue", array(
-				"creator"  => $creator, "description" => $description, "position" => $position, "status" => "new",
-				"assigned" => "", "type" => "mod", "notes" => "", "create_date" => $timeNow, "update_date" => $timeNow
+				"creator"     => trim($creator), "description" => trim($description), "position" => trim($position),
+				"status"      => "new", "assigned" => "", "type" => "mod", "notes" => "", "create_date" => $timeNow,
+				"update_date" => $timeNow
 			));
 		}
 	}
