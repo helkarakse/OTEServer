@@ -7,7 +7,7 @@ class Tick extends CI_Model {
 	
 	// returns the tps data from the db
 	function get_tps($server, $type) {
-		$this->db->select ( "tps, last_update" );
+		$this->db->select ( "rowid, tps, last_update" );
 		$this->db->from ( "TickTps" );
 		$this->db->where ( array (
 			"server" => $server,"type" => $type 
@@ -24,12 +24,14 @@ class Tick extends CI_Model {
 				$tps = "20.00";
 			}
 			
+			$query->free_result ();
 			return array (
-				"tps" => $tps,"last_update" => $row->last_update 
+				"rowid" => $row->rowid,"tps" => $tps,"last_update" => $row->last_update 
 			);
 		} else {
+			$query->free_result ();
 			return array (
-				"tps" => 0,"last_update" => "" 
+				"rowid" => 0,"tps" => 0,"last_update" => "" 
 			);
 		}
 	}
@@ -45,11 +47,61 @@ class Tick extends CI_Model {
 
 	function insert_players($rowId, $players) {
 		if (! empty ( $players )) {
-			foreach ( $players as $player ) {
-				$this->db->insert ( "TickPlayers", array (
-					"tick_id" => $rowId,"name" => $player 
-				) );
+			$string = implode ( ', ', $players );
+			$this->db->insert ( "TickPlayers", array (
+				"tick_id" => $rowId,"name" => $string 
+			) );
+			// foreach ( $players as $player ) {
+			// $this->db->insert ( "TickPlayers", array (
+			// "tick_id" => $rowId,"name" => $player
+			// ) );
+			// }
+		}
+	}
+	
+	// returns an array of players for rowid
+	function get_players($rowId) {
+		$this->db->select ( "name" );
+		$this->db->from ( "TickPlayers" );
+		$this->db->where ( array (
+			"tick_id" => $rowId 
+		) );
+		$query = $this->db->get ();
+		
+		if ($query->num_rows () > 0) {
+			$players = $query->first_row ()->name;
+			$query->free_result ();
+			return explode ( ",", $players );
+		} else {
+			$query->free_result ();
+			return array ();
+		}
+	}
+	
+	// returns an array of tps and player counts
+	function get_tick_data($server, $type) {
+		$returnArray = array ();
+		
+		// get the tps data
+		$this->db->select ( "rowid, tps, last_update" );
+		$this->db->from ( "TickTps" );
+		$this->db->where ( array (
+			"server" => $server,"type" => $type 
+		) );
+		$query = $this->db->get ();
+		
+		if ($query->num_rows () > 0) {
+			foreach ( $query->result () as $row ) {
+				$playerArray = $this->get_players ( $row->rowid );
+				$returnArray [] = array (
+					"last_update" => $row->last_update,"tps" => $row->tps,"count" => count ( $playerArray ) 
+				);
 			}
+			$query->free_result ();
+			return $returnArray;
+		} else {
+			$query->free_result ();
+			return array ();
 		}
 	}
 	
