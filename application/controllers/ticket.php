@@ -8,9 +8,18 @@
 			$this->load->model("ticket_model");
 			$username = $this->input->get_post("name");
 			if (! empty($username)) {
-				$this->outputJson($this->ticket_model->get_user_tickets($username), TRUE);
+				$output = array();
+				$data = $this->ticket_model->get_user_tickets($username);
+				foreach ($data as $row) {
+					$output[] = array(
+						"description" => $row->description, "status" => $row->status,
+						"time_ago"    => pretty_time(strtotime($row->create_date))
+					);
+				}
+
+				output_json($output, TRUE);
 			} else {
-				$this->outputJson(array(), FALSE);
+				output_json(array(), FALSE);
 			}
 		}
 
@@ -18,9 +27,9 @@
 			$this->load->model("ticket_model");
 			$username = $this->input->get_post("name");
 			if (! empty($username)) {
-				$this->outputJson($this->ticket_model->get_user_ticket_count($username), TRUE);
+				output_json($this->ticket_model->get_user_ticket_count($username), TRUE);
 			} else {
-				$this->outputJson(array(), FALSE);
+				output_json(array(), FALSE);
 			}
 		}
 
@@ -33,13 +42,9 @@
 
 			if (! empty($creator) && ! empty($description) && ! empty($position)) {
 				$this->ticket_model->create_ticket($creator, $description, $position);
-				$this->outputJson(array(), TRUE);
+				output_json(array(), TRUE);
 			} else {
-				$this->outputJson(array(), FALSE);
+				output_json(array(), FALSE);
 			}
-		}
-
-		private function outputJson($result, $success) {
-			echo(json_encode(array("result" => $result, "success" => $success)));
 		}
 	}
