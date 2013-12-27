@@ -102,7 +102,7 @@ class Tick extends CI_Model {
 				);
 			}
 			$query->free_result ();
-			return $returnArray;
+			return array_reverse($returnArray);
 		} else {
 			$query->free_result ();
 			return array ();
