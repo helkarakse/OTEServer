@@ -12,5 +12,5 @@
 	$autoload ['config'] = array();
 	$autoload ['language'] = array();
 	$autoload ['model'] = array(
-		'Model_tick', 'Model_ticket', 'Model_auth', 'Model_issue'
+		'model_tick', 'model_ticket', 'model_auth', 'model_issue'
 	);
