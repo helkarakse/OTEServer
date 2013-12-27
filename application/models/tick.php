@@ -79,7 +79,7 @@ class Tick extends CI_Model {
 	}
 	
 	// returns an array of tps and player counts
-	function get_tick_data($server, $type) {
+	function get_tick_data($server, $type, $limit) {
 		$returnArray = array ();
 		
 		// get the tps data
@@ -88,6 +88,9 @@ class Tick extends CI_Model {
 		$this->db->where ( array (
 			"server" => $server,"type" => $type 
 		) );
+		if ($limit != FALSE) {
+			$this->db->limit ( $limit );
+		}
 		$query = $this->db->get ();
 		
 		if ($query->num_rows () > 0) {
