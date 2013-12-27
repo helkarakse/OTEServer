@@ -15,7 +15,7 @@
 			$position = $this->input->post("position");
 
 			if (! empty($creator) && ! empty($description) && ! empty($position)) {
-				$success = $this->ticket->create_ticket($creator, $description, $position);
+				$success = $this->model_ticket->create_ticket($creator, $description, $position);
 				$this->outputJson(array(), $success);
 			} else {
 				$this->outputJson(array(), FALSE);
