@@ -7,7 +7,7 @@
 		'database'
 	);
 	$autoload ['helper'] = array(
-		'file'
+		'file', 'common'
 	);
 	$autoload ['config'] = array();
 	$autoload ['language'] = array();
