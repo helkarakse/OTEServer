@@ -41,11 +41,18 @@
 			}
 		}
 
+		// adds a new ticket to the db given the creator, description and position
 		function create_ticket($creator, $description, $position) {
 			$timeNow = date('Y-m-d H:i:s');
 			$this->db->insert("TicketIssue", array(
 				"creator"  => $creator, "description" => $description, "position" => $position, "status" => "new",
 				"assigned" => "", "type" => "mod", "notes" => "", "create_date" => $timeNow, "update_date" => $timeNow
 			));
+
+			if ($this->db->affected_rows() > 0) {
+				return TRUE;
+			} else {
+				return FALSE;
+			}
 		}
 	}
