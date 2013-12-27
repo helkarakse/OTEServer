@@ -5,11 +5,12 @@
 
 	class Ticket extends CI_Controller {
 		function get_tickets() {
-
+			$this->load->model("ticket_model");
 		}
 
 		// adds a new ticket to the db
 		function add_ticket() {
+			$this->load->model("ticket_model");
 			$creator = $this->input->post("creator");
 			$description = $this->input->post("description");
 			$position = $this->input->post("position");
