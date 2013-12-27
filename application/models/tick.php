@@ -89,6 +89,7 @@ class Tick extends CI_Model {
 			"server" => $server,"type" => $type 
 		) );
 		if ($limit != FALSE) {
+			$this->db->order_by ( "rowid", "desc" );
 			$this->db->limit ( $limit );
 		}
 		$query = $this->db->get ();
