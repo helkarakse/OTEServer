@@ -31,7 +31,9 @@ $(document).ready(function() {
 	<div>
 		<p>
 			TPS: <?php echo $tps;?><br />
-			Last Updated: <?php echo $last_update;?>
+			Last Updated: <?php echo $last_update;?> <br />
+			Players: <?php echo $players;?><br />
+			Player Count: <?php echo $playerCount;?>
 		</p>
 	</div>
 	<div class='tableCSS' id='single'>
