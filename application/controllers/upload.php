@@ -6,6 +6,7 @@
 
 		// upload/put/server/type
 		public function put() {
+			$this->load->model("tps_model");
 			$server = $this->input->get("server");
 			$type = $this->input->get("type");
 			$timeNow = date("r", time());
@@ -35,6 +36,7 @@
 		}
 
 		public function get() {
+			$this->load->model("tps_model");
 			$server = $this->input->get("server");
 			$type = $this->input->get("type");
 

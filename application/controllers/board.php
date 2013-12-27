@@ -6,6 +6,7 @@
 
 		// board/display/server/type
 		public function show() {
+			$this->load->model("tps_model");
 			$server = $this->input->get("server");
 			$type = $this->input->get("type");
 
@@ -30,6 +31,7 @@
 		}
 
 		public function graph() {
+			$this->load->model("tps_model");
 			$server = $this->input->get("server");
 			$type = $this->input->get("type");
 			$limit = $this->input->get("limit");
