@@ -11,9 +11,9 @@
 		// adds a new ticket to the db
 		function add_ticket() {
 			$this->load->model("ticket_model");
-			$creator = $this->input->post("creator");
-			$description = $this->input->post("description");
-			$position = $this->input->post("position");
+			$creator = $this->input->get_post("creator");
+			$description = $this->input->get_post("description");
+			$position = $this->input->get_post("position");
 
 			if (! empty($creator) && ! empty($description) && ! empty($position)) {
 				$success = $this->ticket_model->create_ticket($creator, $description, $position);
