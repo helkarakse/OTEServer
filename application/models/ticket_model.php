@@ -27,7 +27,17 @@
 			}
 		}
 
-		function get_ticket_count($username) {
+		// return array of user's tickets for username
+		function get_user_tickets($username) {
+			$query = $this->db->get_where("TicketIssue", array("creator" => $username, "status !=" => "resolved"));
+			if ($query->num_rows() > 0) {
+				return $query->result();
+			} else {
+				return array();
+			}
+		}
+
+		function get_user_ticket_count($username) {
 			$this->db->select("status, count(status) as count")->from("TicketIssue")->where("creator", $username)->group_by("status");
 			$query = $this->db->get();
 
