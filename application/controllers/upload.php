@@ -20,16 +20,16 @@
 				$tps = $value;
 			}
 
-			$rowId = $this->model_tick->insert_tps($tps, $timeNow, $server, $type);
+			$rowId = $this->tps_model->insert_tps($tps, $timeNow, $server, $type);
 			if (! empty ($playerArray)) {
-				$this->model_tick->insert_players($rowId, $playerArray);
+				$this->tps_model->insert_players($rowId, $playerArray);
 			}
 
 			// re encode the json
 			$text = stripslashes(json_encode($array));
 
 			// save the json to file
-			$this->model_tick->write_tick_data($text, $server, $type);
+			$this->tps_model->write_tick_data($text, $server, $type);
 
 			echo("Updated at: " . $timeNow);
 		}
@@ -38,7 +38,7 @@
 			$server = $this->input->get("server");
 			$type = $this->input->get("type");
 
-			$string = $this->model_tick->read_tick_data($server, $type);
+			$string = $this->tps_model->read_tick_data($server, $type);
 
 			echo($string);
 		}

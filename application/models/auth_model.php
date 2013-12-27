@@ -1,6 +1,6 @@
 <?php
 
-	class model_auth extends CI_Model {
+	class Auth_model extends CI_Model {
 
 		function __construct() {
 			parent::__construct();

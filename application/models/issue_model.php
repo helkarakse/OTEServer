@@ -1,6 +1,6 @@
 <?php
 
-	class model_issue extends CI_Model {
+	class Issue_model extends CI_Model {
 
 		function __construct() {
 			parent::__construct();

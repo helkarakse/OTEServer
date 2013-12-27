@@ -10,9 +10,9 @@
 			$type = $this->input->get("type");
 
 			// load the data from file
-			$data = $this->model_tick->read_tick_data($server, $type);
-			$tps = $this->model_tick->get_tps($server, $type);
-			$players = implode(",", $this->model_tick->get_players($tps ["rowid"]));
+			$data = $this->tps_model->read_tick_data($server, $type);
+			$tps = $this->tps_model->get_tps($server, $type);
+			$players = implode(",", $this->tps_model->get_players($tps ["rowid"]));
 
 			$array = json_decode($data, TRUE);
 			$entityArray = $array [1];
@@ -45,7 +45,7 @@
 			$dataTable->addColumn('number', 'TPS', 'tps');
 			$dataTable->addColumn('number', 'Player Count', 'playerCount');
 
-			$dataArray = $this->model_tick->get_tick_data($server, $type, $limit);
+			$dataArray = $this->tps_model->get_tick_data($server, $type, $limit);
 
 			foreach ($dataArray as $data) {
 				$dataTable->addRow(array(
