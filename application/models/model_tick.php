@@ -1,6 +1,6 @@
 <?php
 
-	class Tick extends CI_Model {
+	class Model_tick extends CI_Model {
 
 		function __construct() {
 			parent::__construct();
