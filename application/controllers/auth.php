@@ -31,4 +31,15 @@
 			}
 
 		}
+
+		function delete_user() {
+			$this->load->model("auth_model");
+			$username = $this->input->get_post("name");
+			if (! empty($username)) {
+				$this->auth_model->delete_auth($username);
+				output_json(array(), TRUE);
+			} else {
+				output_json(array(), FALSE);
+			}
+		}
 	}
