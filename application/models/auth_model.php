@@ -25,4 +25,15 @@
 				return array();
 			}
 		}
+
+		function set_auth($username, $level) {
+			$enumArray = array("Player", "Mod", "Admin", "Dev");
+			if ($level > count($enumArray)) {
+				$rank = "Unknown";
+			} else {
+				$rank = $enumArray[$level];
+			}
+
+			$this->db->where("name", $username)->update("TicketAuth", array("rank" => $rank, "level" => $level));
+		}
 	}
