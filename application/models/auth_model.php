@@ -52,7 +52,7 @@
 
 		private function _get_rank($level) {
 			$enumArray = array("Player", "Mod", "Admin", "Dev");
-			if ($level > count($enumArray)) {
+			if ($level > (count($enumArray) + 1)) {
 				$rank = "Unknown";
 			} else {
 				$rank = $enumArray[$level];
