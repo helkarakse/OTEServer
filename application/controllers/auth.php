@@ -47,6 +47,8 @@
 			$this->load->model("auth_model");
 			$username = $this->input->get_post("name");
 			$level = $this->input->get_post("level");
+			echo $username;
+			echo $level;
 			if (! empty($username) && ! empty($level)) {
 				$this->auth_model->add_auth($username, $level);
 				output_json(array(), TRUE);
