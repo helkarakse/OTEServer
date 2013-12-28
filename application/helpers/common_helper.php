@@ -54,5 +54,5 @@
 	}
 
 	function output_json($result, $success) {
-		echo(json_encode(array("result" => $result, "success" => $success), JSON_FORCE_OBJECT));
+		echo(json_encode(array("result" => $result, "success" => $success), JSON_NUMERIC_CHECK));
 	}
