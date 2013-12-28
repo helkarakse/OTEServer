@@ -16,11 +16,6 @@
 
 		function get_auth_package() {
 			$this->load->model("auth_model");
-			$username = $this->input->get_post("name");
-			if (! empty($username)) {
-				output_json($this->auth_model->get_all_auth(), TRUE);
-			} else {
-				output_json(array(), FALSE);
-			}
+			output_json($this->auth_model->get_all_auth(), TRUE);
 		}
 	}
