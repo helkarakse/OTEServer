@@ -24,8 +24,7 @@
 					$user_pass = $this->input->post('user_pass');
 
 					if (array_key_exists($user_name, $credentials)) {
-						if ($user_pass == $this->encrypt->decode($credentials[$user_name]['user_pass'])) {
-							// user has been logged in
+						if ($user_pass == $this->encrypt->decode($credentials[$user_name]['password'])) {
 							die("USER LOGGED IN!");
 						} else {
 							$this->session->set_flashdata('message', 'Incorrect password.');
