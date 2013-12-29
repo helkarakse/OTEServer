@@ -3,7 +3,41 @@
 		exit ('No direct script access allowed');
 
 	class Admin extends CI_Controller {
+		//		public function encrypt() {
+		//			echo $this->encrypt->encode($this->input->get_post("password"));
+		//		}
+
 		public function index() {
+			$credentials = array();
+			$credentials['admin'] = array(
+				"username" => "admin",
+				"password" => "IDBqocZlRvcIF/stvnNQNHIU5GZkYICttG8RsWvmYLyL/XmHdDOShAB9ggGiPjWwvxv7UL7Pb4uBHyayCCf/Rg=="
+			);
+
+			$this->form_validation->set_rules('user_name', 'username', 'required');
+			$this->form_validation->set_rules('user_pass', 'password', 'required');
+			$this->form_validation->set_error_delimiters('<em>', '</em>');
+
+			if ($this->input->post('login')) {
+				if ($this->form_validation->run()) {
+					$user_name = $this->input->post('user_name');
+					$user_pass = $this->input->post('user_pass');
+
+					if (array_key_exists($user_name, $user_credentials)) {
+						if ($user_pass == $this->encrypt->decode($credentials[$user_name]['user_pass'])) {
+							// user has been logged in
+							die("USER LOGGED IN!");
+						} else {
+							$this->session->set_flashdata('message', 'Incorrect password.');
+							redirect('admin/index/');
+						}
+					} else {
+						$this->session->set_flashdata('message', 'A user does not exist for the username specified.');
+						redirect('admin/index/');
+					}
+				}
+			}
+
 			$this->load->view("admin/view_login");
 		}
 

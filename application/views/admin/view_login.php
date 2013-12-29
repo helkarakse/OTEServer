@@ -15,11 +15,13 @@
 
 	<div class="textfield">
 		<?php echo form_label('Username', 'user_name'); ?>
-		<?php echo form_input('user_name'); ?>
+		<?php echo form_error('user_name'); ?>
+		<?php echo form_input('user_name', set_value('user_name')); ?>
 	</div>
 
 	<div class="textfield">
 		<?php echo form_label('Password', 'user_pass'); ?>
+		<?php echo form_error('user_pass'); ?>
 		<?php echo form_password('user_pass'); ?>
 	</div>
 
