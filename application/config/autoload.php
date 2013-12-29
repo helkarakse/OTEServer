@@ -4,10 +4,10 @@
 
 	$autoload ['packages'] = array();
 	$autoload ['libraries'] = array(
-		'database'
+		'database', 'encrypt', 'form_validation', 'session'
 	);
 	$autoload ['helper'] = array(
-		'file', 'common'
+		'file', 'common', 'form'
 	);
 	$autoload ['config'] = array();
 	$autoload ['language'] = array();
