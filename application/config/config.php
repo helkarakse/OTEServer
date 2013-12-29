@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://dev.otegamers.com/framework/';
+$config['base_url']	= '';
 
 /*
 |--------------------------------------------------------------------------
