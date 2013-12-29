@@ -29,11 +29,11 @@
 							die("USER LOGGED IN!");
 						} else {
 							$this->session->set_flashdata('message', 'Incorrect password.');
-							redirect('admin/index/');
+							redirect('c=admin&m=index');
 						}
 					} else {
 						$this->session->set_flashdata('message', 'A user does not exist for the username specified.');
-						redirect('admin/index/');
+						redirect('c=admin&m=index');
 					}
 				}
 			}

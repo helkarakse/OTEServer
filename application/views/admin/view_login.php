@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="formCenter">
-	<?php echo form_open('admin/index'); ?>
+	<?php echo form_open('c=admin&m=board'); ?>
 	<?php echo form_fieldset('Login'); ?>
 
 	<div class="textfield">
