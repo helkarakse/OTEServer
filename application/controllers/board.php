@@ -3,12 +3,19 @@
 		exit ('No direct script access allowed');
 
 	class Board extends CI_Controller {
-
 		// board/display/server/type
 		public function show() {
 			$this->load->model("tps_model");
 			$server = $this->input->get("server");
 			$type = $this->input->get("type");
+
+			if ($server == "rr" && $type == 1) {
+				$baseUrl = "http://rr.otegamers.com:8123/";
+			} elseif ($server == "rr" && $type == 2) {
+				$baseUrl = "http://rr2.otegamers.com:8124/";
+			} elseif ($server == "ftb" && $type == "unleashed") {
+				$baseUrl = "http://unleashed.otegamers.com:8123/";
+			}
 
 			// load the data from file
 			$data = $this->tps_model->read_tick_data($server, $type);
@@ -20,6 +27,38 @@
 			$chunkArray = $array [2];
 			$typeArray = $array [3];
 			$callArray = $array [4];
+
+			$tmpArray = array();
+			foreach ($entityArray as $entity) {
+				preg_match("/^(.*)\s(.*),(.*),(.*):(.*)/", $entity["Single Entity"], $matches);
+				// only create dynmap url if dimension is 0
+				if ($matches[5] == 0) {
+					$dynmapUrl = $baseUrl . "?worldname=world&mapname=flat&zoom=4&x={$matches[2]}&y={$matches[3]}&z={$matches[4]}";
+				} else {
+					$dynmapUrl = "";
+				}
+				$entity["dynmap_url"] = $dynmapUrl;
+				$tmpArray[] = $entity;
+			}
+
+			$entityArray = $tmpArray;
+
+			$tmpArray = array();
+			foreach ($chunkArray as $chunk) {
+				preg_match("/^(.*):\s(.*),\s(.*)/", $chunk["Chunk"], $matches);
+				// only create dynmap url if dimension is 0
+				if ($matches[1] == 0) {
+					$chunkX = $matches[2] * 16;
+					$chunkZ = $matches[3] * 16;
+					$dynmapUrl = $baseUrl . "?worldname=world&mapname=flat&zoom=4&x={$chunkX}&y=0&z={$chunkZ}";
+				} else {
+					$dynmapUrl = "";
+				}
+				$chunk["dynmap_url"] = $dynmapUrl;
+				$tmpArray[] = $chunk;
+			}
+
+			$chunkArray = $tmpArray;
 
 			$data = array(
 				"entities"    => $entityArray, "chunks" => $chunkArray, "types" => $typeArray, "calls" => $callArray,
