@@ -3,6 +3,10 @@
 		exit ('No direct script access allowed');
 
 	class Board extends CI_Controller {
+		public function index() {
+			$this->load->view("board/view_login");
+		}
+
 		// board/display/server/type
 		public function show() {
 			$this->load->model("tps_model");
