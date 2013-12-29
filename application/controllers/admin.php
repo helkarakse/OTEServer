@@ -22,14 +22,14 @@
 					if (array_key_exists($user_name, $credentials)) {
 						if ($user_pass == $this->encrypt->decode($credentials[$user_name]['password'])) {
 							$this->session->set_userdata(array("is_logged_in" => TRUE));
-							redirect("c=admin&m=main");
+							redirect("c=admin&m=main", "refresh");
 						} else {
 							$this->session->set_flashdata('message', 'Incorrect password.');
-							redirect("c=admin&m=index");
+							redirect("c=admin&m=index", "refresh");
 						}
 					} else {
 						$this->session->set_flashdata('message', 'A user does not exist for the username specified.');
-						redirect("c=admin&m=index");
+						redirect("c=admin&m=index", "refresh");
 					}
 				}
 			}
@@ -40,7 +40,7 @@
 		public function main() {
 			$is_logged_in = $this->session->userdata("is_logged_in");
 			if ($is_logged_in == FALSE) {
-				redirect("c=admin&m=index");
+				redirect("c=admin&m=index", "refresh");
 			}
 
 			$this->load->model("tps_model");
