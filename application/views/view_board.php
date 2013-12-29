@@ -41,7 +41,7 @@
 				<td><?php echo $entity["Single Entity"]; ?></td>
 				<td><?php echo $entity["Time/Tick"]; ?></td>
 				<td><?php echo $entity["%"]; ?></td>
-				<td><a href="<?php echo $entity["dynmap_url"]; ?>">Link</a></td>
+				<td><a href="<?php echo $entity["dynmap_url"]; ?>" target="_blank">Link</a></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>
@@ -59,7 +59,7 @@
 				<td><?php echo $chunk["Chunk"]; ?></td>
 				<td><?php echo $chunk["Time/Tick"]; ?></td>
 				<td><?php echo $chunk["%"]; ?></td>
-				<td><a href="<?php echo $chunk["dynmap_url"]; ?>">Link</a></td>
+				<td><a href="<?php echo $chunk["dynmap_url"]; ?>" target="_blank">Link</a></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>
