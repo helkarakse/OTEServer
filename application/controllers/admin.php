@@ -2,9 +2,9 @@
 	if (! defined('BASEPATH'))
 		exit ('No direct script access allowed');
 
-	class Board extends CI_Controller {
+	class Admin extends CI_Controller {
 		public function index() {
-			$this->load->view("board/view_login");
+			$this->load->view("admin/view_login");
 		}
 
 		// board/display/server/type
@@ -70,7 +70,7 @@
 				"playerCount" => count(explode(",", $players))
 			);
 
-			$this->load->view("board/view_board", $data);
+			$this->load->view("admin/view_board", $data);
 		}
 
 		public function graph() {
@@ -104,6 +104,6 @@
 					))
 			));
 
-			$this->load->view("board/view_graph");
+			$this->load->view("admin/view_graph");
 		}
 	}
