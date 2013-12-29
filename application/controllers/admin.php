@@ -25,7 +25,7 @@
 
 					if (array_key_exists($user_name, $credentials)) {
 						if ($user_pass == $this->encrypt->decode($credentials[$user_name]['password'])) {
-							die("USER LOGGED IN!");
+							echo("Logged in...");
 						} else {
 							$this->session->set_flashdata('message', 'Incorrect password.');
 							redirect('c=admin&m=index');
