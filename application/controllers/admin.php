@@ -3,10 +3,6 @@
 		exit ('No direct script access allowed');
 
 	class Admin extends CI_Controller {
-		//		public function encrypt() {
-		//			echo $this->encrypt->encode($this->input->get_post("password"));
-		//		}
-
 		public function index() {
 			$credentials = array();
 			$credentials['admin'] = array(
@@ -25,19 +21,59 @@
 
 					if (array_key_exists($user_name, $credentials)) {
 						if ($user_pass == $this->encrypt->decode($credentials[$user_name]['password'])) {
-							echo("Logged in...");
+							$this->session->set_userdata(array("is_logged_in" => TRUE));
+							redirect("c=admin&m=main");
 						} else {
 							$this->session->set_flashdata('message', 'Incorrect password.');
-							$this->load->view("admin/view_login");
+							redirect("c=admin&m=index");
 						}
 					} else {
 						$this->session->set_flashdata('message', 'A user does not exist for the username specified.');
-						$this->load->view("admin/view_login");
+						redirect("c=admin&m=index");
 					}
 				}
 			}
 
 			$this->load->view("admin/view_login");
+		}
+
+		public function main() {
+			$is_logged_in = $this->session->userdata("is_logged_in");
+			if ($is_logged_in == FALSE) {
+				redirect("c=admin&m=index");
+			}
+
+			$this->load->model("tps_model");
+			$server = $this->input->get("server");
+			$type = $this->input->get("type");
+			$limit = $this->input->get("limit");
+
+			if (empty ($limit)) {
+				$limit = FALSE;
+			}
+
+			$this->load->library('gcharts');
+			$this->gcharts->load('LineChart');
+			$dataTable = $this->gcharts->DataTable('TPS');
+			$dataTable->addColumn('string', 'Timestamp', 'timestamp');
+			$dataTable->addColumn('number', 'TPS', 'tps');
+			$dataTable->addColumn('number', 'Player Count', 'playerCount');
+
+			$dataArray = $this->tps_model->get_tick_data($server, $type, $limit);
+
+			foreach ($dataArray as $data) {
+				$dataTable->addRow(array(
+					date("d/m/Y H:i:s", strtotime($data ["last_update"])), $data ["tps"], $data ["count"]
+				));
+			}
+
+			$this->gcharts->LineChart('TPS')->setConfig(array(
+				"title" => "TPS", 'hAxis' => new hAxis (array(
+						'textPosition' => 'out', 'slantedText' => TRUE, 'slantedTextAngle' => 45
+					))
+			));
+
+			$this->load->view("admin/view_graph");
 		}
 
 		// board/display/server/type
