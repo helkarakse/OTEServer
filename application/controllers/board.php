@@ -66,7 +66,7 @@
 				"playerCount" => count(explode(",", $players))
 			);
 
-			$this->load->view("view_board", $data);
+			$this->load->view("board/view_board", $data);
 		}
 
 		public function graph() {
@@ -100,6 +100,6 @@
 					))
 			));
 
-			$this->load->view("view_graph");
+			$this->load->view("board/view_graph");
 		}
 	}
