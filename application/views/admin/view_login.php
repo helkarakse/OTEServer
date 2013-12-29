@@ -11,10 +11,12 @@
 <body>
 <h1>Tutorial: Simple Login Form</h1>
 
-<?php if ($this->session->flashdata('message')) : ?>
-	<p><?php echo $this->session->flashdata('message'); ?></p>
-<?php endif; ?>
+
 <div class="formCenter">
+	<?php if ($this->session->flashdata('message')) : ?>
+		<p><?php echo $this->session->flashdata('message'); ?></p>
+	<?php endif; ?>
+	
 	<?php echo form_open('c=admin&m=index'); ?>
 	<?php echo form_fieldset('Login'); ?>
 

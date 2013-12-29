@@ -28,11 +28,11 @@
 							echo("Logged in...");
 						} else {
 							$this->session->set_flashdata('message', 'Incorrect password.');
-							redirect('c=admin&m=index');
+							$this->load->view("admin/view_login");
 						}
 					} else {
 						$this->session->set_flashdata('message', 'A user does not exist for the username specified.');
-						redirect('c=admin&m=index');
+						$this->load->view("admin/view_login");
 					}
 				}
 			}
