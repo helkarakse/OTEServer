@@ -41,6 +41,7 @@
 
 		public function main() {
 			if ($this->session->userdata("is_logged_in")) {
+				$this->load->model("tps_model");
 				$data = array(
 					"Resonant Rise 1"    => array(
 						"tps"   => $this->tps_model->get_tps("rr", "1"),
