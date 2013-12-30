@@ -4,7 +4,7 @@
 		<li><a href="<?php echo site_url(array("c" => "admin", "m" => "board", "server" => "rr", "type" => "1")); ?>">Resonant
 				Rise 1</a></li>
 		<li><a href="<?php echo site_url(array("c" => "admin", "m" => "board", "server" => "rr", "type" => "2")); ?>">Resonant
-				Rise 1</a></li>
+				Rise 2</a></li>
 		<li><a href="<?php echo site_url(array(
 				"c" => "admin", "m" => "board", "server" => "ftb", "type" => "unleashed"
 			)); ?>">FTB Unleashed</a></li>
