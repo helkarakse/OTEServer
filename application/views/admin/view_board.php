@@ -19,13 +19,14 @@
 			<li class="menuLink" display="call"><a href="#">Average Calls</a></li>
 		</ul>
 	</div>
-
-	<p>
-		TPS: <?php echo $tps; ?><br/>
-		Last Updated: <?php echo $last_update; ?> <br/>
-		Players: <?php echo $players; ?><br/>
-		Player Count: <?php echo $playerCount; ?>
-	</p>
+	<div class="mainText">
+		<p>
+			TPS: <?php echo $tps; ?><br/>
+			Last Updated: <?php echo $last_update; ?> <br/>
+			Players: <?php echo $players; ?><br/>
+			Player Count: <?php echo $playerCount; ?>
+		</p>
+	</div>
 
 	<div class='tableCSS' id='single'>
 		<table>
