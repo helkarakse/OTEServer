@@ -23,6 +23,12 @@
 				<a href="<?php echo site_url(array("c" => "admin", "m" => "main")); ?>">Home</a>
 			</li>
 			<li>
+				<a href="<?php echo site_url(array("c" => "admin", "m" => "board")); ?>">TPS Board</a>
+			</li>
+			<li>
+				<a href="<?php echo site_url(array("c" => "admin", "m" => "graph")); ?>">TPS Graph</a>
+			</li>
+			<li>
 				<a href="<?php echo site_url(array("c" => "admin", "m" => "logout")); ?>">Logout</a>
 			</li>
 		</ul>
