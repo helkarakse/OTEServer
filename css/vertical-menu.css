@@ -6,11 +6,13 @@
 	padding: 0;
 	min-height: 1000px;
 }
+
 #vertMenu li {
 	font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
 	margin: 0;
 	padding: 0;
 }
+
 #vertMenu a {
 	background: #333;
 	border-bottom: 1px solid #393939;
@@ -20,8 +22,9 @@
 	padding: 8px 12px;
 	text-decoration: none;
 }
+
 #vertMenu a:hover {
-	background: #2580a2 url("images/hover.gif") left center no-repeat;
+	background: #2580a2 url("../images/hover.gif") left center no-repeat;
 	color: #fff;
 	padding-bottom: 8px;
 }
