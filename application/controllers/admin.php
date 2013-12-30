@@ -41,7 +41,7 @@
 		}
 
 		public function main() {
-			if ($this->session->get_userdata("is_logged_in")) {
+			if ($this->session->userdata("is_logged_in")) {
 				$this->load->model("tps_model");
 				$server = $this->input->get("server");
 				$type = $this->input->get("type");
