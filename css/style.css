@@ -53,6 +53,7 @@ h1 {
 }
 
 #main {
+	height: 100%;
 	float: right;
 	width: 880px;
 	padding: 10px;
@@ -112,7 +113,6 @@ a.button {
 a.button:hover {
 	background-color: #c33100;
 }
-
 
 /* Links */
 a.view {
