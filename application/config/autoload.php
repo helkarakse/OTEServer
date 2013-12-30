@@ -7,7 +7,7 @@
 		'database', 'encrypt', 'form_validation', 'session'
 	);
 	$autoload ['helper'] = array(
-		'file', 'common', 'form'
+		'file', 'common', 'form', 'url'
 	);
 	$autoload ['config'] = array();
 	$autoload ['language'] = array();

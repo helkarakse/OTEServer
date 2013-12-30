@@ -51,6 +51,8 @@
 
 			return $diff == 1 ? $diff . ' year ago' : $diff . ' years ago';
 		}
+
+		return "";
 	}
 
 	function output_json($result, $success) {
