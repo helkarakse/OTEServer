@@ -44,13 +44,13 @@
 				$this->load->model("tps_model");
 				$data = array(
 					"Resonant Rise 1"    => array(
-						"tps"   => $this->tps_model->get_tps("rr", "1"),
+						"tps"   => $this->tps_model->get_tps("rr", "1")["tps"],
 						"count" => count(implode(",", $this->tps_model->get_players($this->tps_model->get_tps("rr", "2")["rowid"])))
 					), "Resonant Rise 2" => array(
-						"tps"   => $this->tps_model->get_tps("rr", "2"),
+						"tps"   => $this->tps_model->get_tps("rr", "2")["tps"],
 						"count" => count(implode(",", $this->tps_model->get_players($this->tps_model->get_tps("rr", "2")["rowid"])))
 					), "FTB Unleashed"   => array(
-						"tps"   => $this->tps_model->get_tps("ftb", "unleashed"),
+						"tps"   => $this->tps_model->get_tps("ftb", "unleashed")["tps"],
 						"count" => count(implode(",", $this->tps_model->get_players($this->tps_model->get_tps("rr", "2")["rowid"])))
 					)
 				);
