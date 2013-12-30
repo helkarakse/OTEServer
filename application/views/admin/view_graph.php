@@ -1,4 +1,3 @@
-<script type="text/javascript" src="./js/tick_board.js"></script>
 <div id="nav">
 	<ul id="menu">
 		<li><a href="<?php echo site_url(array("c"     => "admin", "m" => "graph", "server" => "rr", "type" => "1",
