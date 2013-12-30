@@ -6,8 +6,7 @@
 		public function index() {
 			$credentials = array();
 			$credentials['admin'] = array(
-				"username" => "admin",
-				"password" => "IDBqocZlRvcIF/stvnNQNHIU5GZkYICttG8RsWvmYLyL/XmHdDOShAB9ggGiPjWwvxv7UL7Pb4uBHyayCCf/Rg=="
+				"username" => "admin", "password" => "test"
 			);
 
 			$this->form_validation->set_rules('user_name', 'username', 'required');
@@ -19,7 +18,7 @@
 				$user_pass = $this->input->post('user_pass');
 
 				if (array_key_exists($user_name, $credentials)) {
-					if ($user_pass == $this->encrypt->decode($credentials[$user_name]['password'])) {
+					if ($user_pass == $credentials[$user_name]['password']) {
 						$this->session->set_userdata(array("is_logged_in" => TRUE));
 						redirect(site_url(array("c" => "admin", "m" => "main")), "refresh");
 					} else {
