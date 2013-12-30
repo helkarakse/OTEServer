@@ -1,4 +1,4 @@
-ul {
+.listCSS ul {
 	float: left;
 	width: 100%;
 	padding: 0;
@@ -6,7 +6,7 @@ ul {
 	margin: 0 0 1em;
 }
 
-a {
+.listCSS a {
 	float: left;
 	width: 6em;
 	text-decoration: none;
@@ -16,11 +16,11 @@ a {
 	border-right: 1px solid white;
 }
 
-a:hover {
+.listCSS a:hover {
 	background-color: #ff3300;
 }
 
-li {
+.listCSS li {
 	display: inline;
 }
 

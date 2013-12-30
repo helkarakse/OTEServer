@@ -11,12 +11,14 @@
 	</ul>
 </div>
 <div id="main">
-	<ul id="menu">
-		<li class="menuLink" display="single"><a href="#">Single Entities</a></li>
-		<li class="menuLink" display="chunk"><a href="#">Chunks</a></li>
-		<li class="menuLink" display="type"><a href="#">Entity Types</a></li>
-		<li class="menuLink" display="call"><a href="#">Average Calls</a></li>
-	</ul>
+	<div class="listCSS">
+		<ul id="menu">
+			<li class="menuLink" display="single"><a href="#">Single Entities</a></li>
+			<li class="menuLink" display="chunk"><a href="#">Chunks</a></li>
+			<li class="menuLink" display="type"><a href="#">Entity Types</a></li>
+			<li class="menuLink" display="call"><a href="#">Average Calls</a></li>
+		</ul>
+	</div>
 
 	<p>
 		TPS: <?php echo $tps; ?><br/>
