@@ -32,15 +32,23 @@
 		<table>
 			<tr>
 				<td>Single Entity</td>
+				<td>Position (X, Y, Z)</td>
 				<td>Time/Tick</td>
 				<td>%</td>
 				<td>Dynmap</td>
 			</tr>
 			<?php foreach ($entities as $entity): ?>
 				<tr>
-					<td><?php echo $entity["Single Entity"]; ?></td>
+					<td><?php echo $entity["name"]; ?></td>
+					<td><?php echo $entity["position"]; ?></td>
 					<td><?php echo $entity["Time/Tick"]; ?></td>
-					<td><?php echo $entity["%"]; ?></td>
+					<td class="<?php if ($entity["%"] >= 5) {
+						echo "red";
+					} elseif ($entity["%"] >= 3 && $entity["%"] < 5) {
+						echo "yellow";
+					} else {
+						echo "green";
+					} ?>"><?php echo $entity["%"]; ?></td>
 					<td>
 						<?php if (! empty($entity["dynmap_url"])) { ?><a href="<?php echo $entity["dynmap_url"]; ?>"
 						                                                 target="_blank">Link</a><?php } ?>
@@ -52,7 +60,8 @@
 	<div class='tableCSS' id='chunk'>
 		<table>
 			<tr>
-				<td>Chunk Position</td>
+				<td>Chunk Coordinates</td>
+				<td>Position (X, Z)</td>
 				<td>Time/Tick</td>
 				<td>%</td>
 				<td>Dynmap</td>
@@ -60,10 +69,17 @@
 			<?php foreach ($chunks as $chunk): ?>
 				<tr>
 					<td><?php echo $chunk["Chunk"]; ?></td>
+					<td><?php echo $chunk["position"]; ?></td>
 					<td><?php echo $chunk["Time/Tick"]; ?></td>
-					<td><?php echo $chunk["%"]; ?></td>
-					<td><?php if (! empty($entity["dynmap_url"])) { ?><a href="<?php echo $chunk["dynmap_url"]; ?>"
-					                                                     target="_blank">Link</a><?php } ?></td>
+					<td class="<?php if ($chunk["%"] >= 5) {
+						echo "red";
+					} elseif ($chunk["%"] >= 3 && $chunk["%"] < 5) {
+						echo "yellow";
+					} else {
+						echo "green";
+					} ?>"><?php echo $chunk["%"]; ?></td>
+					<td><?php if (! empty($chunk["dynmap_url"])) { ?><a href="<?php echo $chunk["dynmap_url"]; ?>"
+					                                                    target="_blank">Link</a><?php } ?></td>
 				</tr>
 			<?php endforeach; ?>
 		</table>
