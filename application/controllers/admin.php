@@ -168,7 +168,7 @@
 						))
 				));
 
-				$this->load->view("admin/view_graph");
+				$this->load->view("admin/view_template", array("body" => "admin/view_graph"));
 			} else {
 				redirect(site_url(array("c" => "admin")));
 			}
