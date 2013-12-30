@@ -30,7 +30,7 @@
 			</li>
 			<li>
 				<a href="<?php echo site_url(array(
-					"c" => "admin", "m" => "graph", "server" => "rr", "type" => "1"
+					"c" => "admin", "m" => "graph", "server" => "rr", "type" => "1", "limit" => 50
 				)); ?>">TPS Graph</a>
 			</li>
 			<li>
