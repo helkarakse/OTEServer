@@ -1,4 +1,4 @@
-AdminTicketServer
+OTEServer
 =================
 
-Server side project files for the admin ticket system
+Codeigniter based administrative portal for OTEGamers
