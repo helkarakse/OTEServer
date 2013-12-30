@@ -16,8 +16,7 @@ p {
 	margin-top: 150px;
 	margin-right: auto;
 	margin-left: auto;
-	border-color: white;
-	border-style: double;
+	border: double white;
 	padding-left: 5px;
 	padding-top: 5px;
 	background-color: #fff;
@@ -172,24 +171,19 @@ a.greenView:hover {
 table.gridtable {
 	font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
 	color: #333333;
-	border-width: 1px;
-	border-color: #666666;
+	border: 1px #666666;
 	border-collapse: collapse;
 }
 
 table.gridtable th {
-	border-width: 1px;
 	padding: 4px;
-	border-style: solid;
-	border-color: #666666;
+	border: 1px solid #666666;
 	background-color: #dedede;
 }
 
 table.gridtable td {
-	border-width: 1px;
 	padding: 4px;
-	border-style: solid;
-	border-color: #666666;
+	border: 1px solid #666666;
 	background-color: #ffffff;
 }
 
@@ -213,8 +207,8 @@ table.gridtablenoborder td {
 .dateMenu {
 	list-style-type: none;
 	height: 25px;
-	padding: 0px;
-	margin-top: 0px;
+	padding: 0;
+	margin-top: 0;
 	margin-bottom: 10px;
 }
 
