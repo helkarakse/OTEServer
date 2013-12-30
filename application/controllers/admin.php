@@ -41,7 +41,20 @@
 
 		public function main() {
 			if ($this->session->userdata("is_logged_in")) {
-				$this->load->view("admin/view_template", array("body" => "admin/view_board"));
+				$data = array(
+					"Resonant Rise 1"    => array(
+						"tps"   => $this->tps_model->get_tps("rr", "1"),
+						"count" => count(implode(",", $this->tps_model->get_players($this->tps_model->get_tps("rr", "2")["rowid"])))
+					), "Resonant Rise 2" => array(
+						"tps"   => $this->tps_model->get_tps("rr", "2"),
+						"count" => count(implode(",", $this->tps_model->get_players($this->tps_model->get_tps("rr", "2")["rowid"])))
+					), "FTB Unleashed"   => array(
+						"tps"   => $this->tps_model->get_tps("ftb", "unleashed"),
+						"count" => count(implode(",", $this->tps_model->get_players($this->tps_model->get_tps("rr", "2")["rowid"])))
+					)
+				);
+
+				$this->load->view("admin/view_template", array("body" => "admin/view_main", "data" => $data));
 			} else {
 				redirect(site_url(array("c" => "admin")));
 			}
