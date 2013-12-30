@@ -6,7 +6,7 @@
 		public function index() {
 			$credentials = array();
 			$credentials['admin'] = array(
-				"username" => "admin", "password" => "test"
+				"username" => "admin", "password" => "b56W765u3K"
 			);
 
 			$this->form_validation->set_rules('user_name', 'username', 'required');
