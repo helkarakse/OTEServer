@@ -38,7 +38,7 @@
 	border-collapse: collapse;
 	border-spacing: 0;
 	width: 100%;
-	height: 100%;
+	height: 16px;
 	margin: 0;
 	padding: 0;
 }
@@ -82,10 +82,7 @@
 .tableCSS td {
 	vertical-align: middle;
 	text-align: center;
-	padding: 7px;
 	font-size: 12px;
-	font-family: Courier, monospace;
-	font-weight: normal;
 	color: #000000;
 }
 
@@ -113,9 +110,7 @@
 	border-right-width: 0;
 	border-left-width: 1px;
 	border-bottom-width: 1px;
-	font-size: 16px;
-	font-family: Courier, monospace;
-	font-weight: bold;
+	font-size: 14px;
 	color: #ffffff;
 }
 
@@ -134,4 +129,22 @@
 
 .tableCSS tr:first-child td:last-child {
 	border-width: 0 0 1px 1px;
+}
+
+.tableCSS td.red {
+	background-color: #ff0000;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+.tableCSS td.yellow {
+	background-color: #ffff00;
+	color: #000000;
+	font-weight: bold;
+}
+
+.tableCSS td.green {
+	background-color: #00ff00;
+	color: #ffffff;
+	font-weight: bold;
 }
