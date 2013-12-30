@@ -10,6 +10,35 @@
 	        src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
-<?php $this->load->view($body); ?>
+<div id="wrap">
+	<div id="header">
+		<strong>OTE Gamers Admin Portal</strong>
+	</div>
+	<div id="mainWrapper">
+		<?php $this->load->view($body); ?>
+	</div>
+	<div id="sidebar">
+		<ul id="vertMenu">
+			<li>
+				<a href="./main.php">Home</a>
+			</li>
+			<li>
+				<a href="./tracking.php?type=page">Tracking</a>
+			</li>
+			<li>
+				<a href="./participants.php?filter=all">Participants</a>
+			</li>
+			<li>
+				<a href="./winner.php">Winners</a>
+			</li>
+			<li>
+				<a href="./blacklist.php">Blacklist</a>
+			</li>
+			<li>
+				<a href="./logout.php">Logout</a>
+			</li>
+		</ul>
+	</div>
+</div>
 </body>
 </html>
