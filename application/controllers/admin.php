@@ -105,7 +105,7 @@
 				}
 
 				$entityArray = $tmpArray;
-				
+
 				if ($server != "ftb") {
 					$tmpArray = array();
 					foreach ($chunkArray as $chunk) {
