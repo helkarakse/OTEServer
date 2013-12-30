@@ -1,11 +1,11 @@
 <div id="nav">
 	<ul id="menu">
-		<li><a href="<?php echo site_url(array("c"     => "admin", "m" => "graph", "server" => "rr", "type" => "1",
-		                                       "limit" => 50
+		<li><a href="<?php echo site_url(array(
+				"c" => "admin", "m" => "graph", "server" => "rr", "type" => "1", "limit" => 50
 			)); ?>">Resonant
 				Rise 1</a></li>
-		<li><a href="<?php echo site_url(array("c"     => "admin", "m" => "graph", "server" => "rr", "type" => "2",
-		                                       "limit" => 50
+		<li><a href="<?php echo site_url(array(
+				"c" => "admin", "m" => "graph", "server" => "rr", "type" => "2", "limit" => 50
 			)); ?>">Resonant
 				Rise 2</a></li>
 		<li><a href="<?php echo site_url(array(
