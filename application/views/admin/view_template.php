@@ -20,22 +20,10 @@
 	<div id="sidebar">
 		<ul id="vertMenu">
 			<li>
-				<a href="./main.php">Home</a>
+				<a href="<?php echo site_url(array("c" => "admin", "m" => "main")); ?>">Home</a>
 			</li>
 			<li>
-				<a href="./tracking.php?type=page">Tracking</a>
-			</li>
-			<li>
-				<a href="./participants.php?filter=all">Participants</a>
-			</li>
-			<li>
-				<a href="./winner.php">Winners</a>
-			</li>
-			<li>
-				<a href="./blacklist.php">Blacklist</a>
-			</li>
-			<li>
-				<a href="./logout.php">Logout</a>
+				<a href="<?php echo site_url(array("c" => "admin", "m" => "logout")); ?>">Logout</a>
 			</li>
 		</ul>
 	</div>
