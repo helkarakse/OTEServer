@@ -121,7 +121,7 @@
 						}
 						$chunk["dynmap_url"] = $dynmapUrl;
 					} else {
-						$chunk["dynmap_url"] = "";
+						$chunk["dynmap_url"] = "#";
 					}
 					$tmpArray[] = $chunk;
 				}
