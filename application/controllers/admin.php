@@ -68,11 +68,11 @@
 				$type = $this->input->get("type");
 
 				if ($server == "rr" && $type == 1) {
-					$baseUrl = "http://rr.otegamers.com:8123/";
+					$dynmap_url = "http://rr.otegamers.com:8123/";
 				} elseif ($server == "rr" && $type == 2) {
-					$baseUrl = "http://rr2.otegamers.com:8124/";
+					$dynmap_url = "http://rr2.otegamers.com:8124/";
 				} elseif ($server == "ftb" && $type == "unleashed") {
-					$baseUrl = "http://unleashed.otegamers.com:8123/";
+					$dynmap_url = "http://unleashed.otegamers.com:8123/";
 				}
 
 				// load the data from file
@@ -96,11 +96,11 @@
 					preg_match("/^(.*)\s(.*),(.*),(.*):(.*)/", $entity["Single Entity"], $matches);
 					// only create dynmap url if dimension is 0
 					if ($matches[5] == 0) {
-						$dynmapUrl = $baseUrl . "?worldname=world&mapname=flat&zoom=4&x={$matches[2]}&y={$matches[3]}&z={$matches[4]}";
+						$dynmap_url = $dynmap_url . "?worldname=world&mapname=flat&zoom=4&x={$matches[2]}&y={$matches[3]}&z={$matches[4]}";
 					} else {
-						$dynmapUrl = "";
+						$dynmap_url = "";
 					}
-					$entity["dynmap_url"] = $dynmapUrl;
+					$entity["dynmap_url"] = $dynmap_url;
 					$tmpArray[] = $entity;
 				}
 
@@ -115,13 +115,13 @@
 						if ($matches[1] == 0) {
 							$chunkX = $matches[2] * 16;
 							$chunkZ = $matches[3] * 16;
-							$dynmapUrl = $baseUrl . "?worldname=world&mapname=flat&zoom=4&x={$chunkX}&y=0&z={$chunkZ}";
+							$dynmapUrl = $dynmap_url . "?worldname=world&mapname=flat&zoom=4&x={$chunkX}&y=0&z={$chunkZ}";
 						} else {
 							$dynmapUrl = "";
 						}
 						$chunk["dynmap_url"] = $dynmapUrl;
 					} else {
-						$chunk["dynmap_url"] = "#";
+						$chunk["dynmap_url"] = "";
 					}
 					$tmpArray[] = $chunk;
 				}

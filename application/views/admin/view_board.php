@@ -41,7 +41,13 @@
 					<td><?php echo $entity["Single Entity"]; ?></td>
 					<td><?php echo $entity["Time/Tick"]; ?></td>
 					<td><?php echo $entity["%"]; ?></td>
-					<td><a href="<?php echo $entity["dynmap_url"]; ?>" target="_blank">Link</a></td>
+					<td>
+						<a href="<?php echo $entity["dynmap_url"]; ?>" <?php if (! empty($entity["dynmap_url"])) {
+							echo("target='_blank'");
+						} else {
+							echo "";
+						} ?>>Link</a>
+					</td>
 				</tr>
 			<?php endforeach; ?>
 		</table>
