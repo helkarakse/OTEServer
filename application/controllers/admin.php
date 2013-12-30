@@ -137,36 +137,40 @@
 		}
 
 		public function graph() {
-			$this->load->model("tps_model");
-			$server = $this->input->get("server");
-			$type = $this->input->get("type");
-			$limit = $this->input->get("limit");
+			if ($this->session->userdata("is_logged_in")) {
+				$this->load->model("tps_model");
+				$server = $this->input->get("server");
+				$type = $this->input->get("type");
+				$limit = $this->input->get("limit");
 
-			if (empty ($limit)) {
-				$limit = FALSE;
-			}
+				if (empty ($limit)) {
+					$limit = FALSE;
+				}
 
-			$this->load->library('gcharts');
-			$this->gcharts->load('LineChart');
-			$dataTable = $this->gcharts->DataTable('TPS');
-			$dataTable->addColumn('string', 'Timestamp', 'timestamp');
-			$dataTable->addColumn('number', 'TPS', 'tps');
-			$dataTable->addColumn('number', 'Player Count', 'playerCount');
+				$this->load->library('gcharts');
+				$this->gcharts->load('LineChart');
+				$dataTable = $this->gcharts->DataTable('TPS');
+				$dataTable->addColumn('string', 'Timestamp', 'timestamp');
+				$dataTable->addColumn('number', 'TPS', 'tps');
+				$dataTable->addColumn('number', 'Player Count', 'playerCount');
 
-			$dataArray = $this->tps_model->get_tick_data($server, $type, $limit);
+				$dataArray = $this->tps_model->get_tick_data($server, $type, $limit);
 
-			foreach ($dataArray as $data) {
-				$dataTable->addRow(array(
-					date("d/m/Y H:i:s", strtotime($data ["last_update"])), $data ["tps"], $data ["count"]
+				foreach ($dataArray as $data) {
+					$dataTable->addRow(array(
+						date("d/m/Y H:i:s", strtotime($data ["last_update"])), $data ["tps"], $data ["count"]
+					));
+				}
+
+				$this->gcharts->LineChart('TPS')->setConfig(array(
+					"title" => "TPS", 'hAxis' => new hAxis (array(
+							'textPosition' => 'out', 'slantedText' => TRUE, 'slantedTextAngle' => 45
+						))
 				));
+
+				$this->load->view("admin/view_graph");
+			} else {
+				redirect(site_url(array("c" => "admin")));
 			}
-
-			$this->gcharts->LineChart('TPS')->setConfig(array(
-				"title" => "TPS", 'hAxis' => new hAxis (array(
-						'textPosition' => 'out', 'slantedText' => TRUE, 'slantedTextAngle' => 45
-					))
-			));
-
-			$this->load->view("admin/view_graph");
 		}
 	}
