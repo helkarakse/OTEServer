@@ -42,11 +42,8 @@
 					<td><?php echo $entity["Time/Tick"]; ?></td>
 					<td><?php echo $entity["%"]; ?></td>
 					<td>
-						<a href="<?php echo $entity["dynmap_url"]; ?>" <?php if (! empty($entity["dynmap_url"])) {
-							echo("target='_blank'");
-						} else {
-							echo "";
-						} ?>>Link</a>
+						<?php if (! empty($entity["dynmap_url"])) { ?><a href="<?php echo $entity["dynmap_url"]; ?>"
+						                                                 target="_blank">Link</a><?php } ?>
 					</td>
 				</tr>
 			<?php endforeach; ?>
@@ -65,7 +62,8 @@
 					<td><?php echo $chunk["Chunk"]; ?></td>
 					<td><?php echo $chunk["Time/Tick"]; ?></td>
 					<td><?php echo $chunk["%"]; ?></td>
-					<td><a href="<?php echo $chunk["dynmap_url"]; ?>" target="_blank">Link</a></td>
+					<td><?php if (! empty($entity["dynmap_url"])) { ?><a href="<?php echo $chunk["dynmap_url"]; ?>"
+					                                                     target="_blank">Link</a><?php } ?></td>
 				</tr>
 			<?php endforeach; ?>
 		</table>

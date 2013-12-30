@@ -115,11 +115,11 @@
 						if ($matches[1] == 0) {
 							$chunkX = $matches[2] * 16;
 							$chunkZ = $matches[3] * 16;
-							$dynmapUrl = $dynmap_url . "?worldname=world&mapname=flat&zoom=4&x={$chunkX}&y=0&z={$chunkZ}";
+							$dynmap_url = $dynmap_url . "?worldname=world&mapname=flat&zoom=4&x={$chunkX}&y=0&z={$chunkZ}";
 						} else {
-							$dynmapUrl = "";
+							$dynmap_url = "";
 						}
-						$chunk["dynmap_url"] = $dynmapUrl;
+						$chunk["dynmap_url"] = $dynmap_url;
 					} else {
 						$chunk["dynmap_url"] = "";
 					}
