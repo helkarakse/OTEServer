@@ -1,13 +1,23 @@
 <script type="text/javascript" src="../js/tick_board.js"></script>
 <div id="nav">
 	<ul id="menu">
-		<li display="single"><a href="#">Single Entities</a></li>
-		<li display="chunk"><a href="#">Chunks</a></li>
-		<li display="type"><a href="#">Entity Types</a></li>
-		<li display="call"><a href="#">Average Calls</a></li>
+		<li><a href="<?php echo site_url(array("c" => "admin", "m" => "board", "server" => "rr", "type" => "1")); ?>">Resonant
+				Rise 1</a></li>
+		<li><a href="<?php echo site_url(array("c" => "admin", "m" => "board", "server" => "rr", "type" => "2")); ?>">Resonant
+				Rise 1</a></li>
+		<li><a href="<?php echo site_url(array(
+				"c" => "admin", "m" => "board", "server" => "ftb", "type" => "unleashed"
+			)); ?>">FTB Unleashed</a></li>
 	</ul>
 </div>
 <div id="main">
+	<ul id="menu">
+		<li class="menuLink" display="single"><a href="#">Single Entities</a></li>
+		<li class="menuLink" display="chunk"><a href="#">Chunks</a></li>
+		<li class="menuLink" display="type"><a href="#">Entity Types</a></li>
+		<li class="menuLink" display="call"><a href="#">Average Calls</a></li>
+	</ul>
+
 	<p>
 		TPS: <?php echo $tps; ?><br/>
 		Last Updated: <?php echo $last_update; ?> <br/>
