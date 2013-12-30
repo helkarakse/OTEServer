@@ -106,10 +106,11 @@
 
 				$entityArray = $tmpArray;
 
-				if ($server != "ftb") {
-					$tmpArray = array();
-					foreach ($chunkArray as $chunk) {
+				$tmpArray = array();
+				foreach ($chunkArray as $chunk) {
+					if ($server != "ftb") {
 						preg_match("/^(.*):\s(.*),\s(.*)/", $chunk["Chunk"], $matches);
+
 						// only create dynmap url if dimension is 0
 						if ($matches[1] == 0) {
 							$chunkX = $matches[2] * 16;
@@ -119,11 +120,13 @@
 							$dynmapUrl = "";
 						}
 						$chunk["dynmap_url"] = $dynmapUrl;
-						$tmpArray[] = $chunk;
+					} else {
+						$chunk["dynmap_url"] = "";
 					}
-
-					$chunkArray = $tmpArray;
+					$tmpArray[] = $chunk;
 				}
+
+				$chunkArray = $tmpArray;
 
 				$data = array(
 					"entities"    => $entityArray, "chunks" => $chunkArray, "types" => $typeArray,
