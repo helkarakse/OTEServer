@@ -41,6 +41,14 @@
 
 		public function main() {
 			if ($this->session->userdata("is_logged_in")) {
+				$this->load->view("admin/view_template", array("body" => "admin/view_board"));
+			} else {
+				redirect(site_url(array("c" => "admin")));
+			}
+		}
+
+		public function board() {
+			if ($this->session->userdata("is_logged_in")) {
 				$this->load->model("tps_model");
 				$server = $this->input->get("server");
 				$type = $this->input->get("type");
