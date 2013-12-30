@@ -4,6 +4,7 @@
 	<title>Admin Portal</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/table_style.css">
 	<link rel="stylesheet" type="text/css" href="./css/horizontal-menu.css">
 	<link rel="stylesheet" type="text/css" href="./css/vertical-menu.css">
 	<script type="text/javascript"
