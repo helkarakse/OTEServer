@@ -23,10 +23,14 @@
 				<a href="<?php echo site_url(array("c" => "admin", "m" => "main")); ?>">Home</a>
 			</li>
 			<li>
-				<a href="<?php echo site_url(array("c" => "admin", "m" => "board")); ?>">TPS Board</a>
+				<a href="<?php echo site_url(array(
+					"c" => "admin", "m" => "board", "server" => "rr", "type" => "1"
+				)); ?>">TPS Board</a>
 			</li>
 			<li>
-				<a href="<?php echo site_url(array("c" => "admin", "m" => "graph")); ?>">TPS Graph</a>
+				<a href="<?php echo site_url(array(
+					"c" => "admin", "m" => "graph", "server" => "rr", "type" => "1"
+				)); ?>">TPS Graph</a>
 			</li>
 			<li>
 				<a href="<?php echo site_url(array("c" => "admin", "m" => "logout")); ?>">Logout</a>
