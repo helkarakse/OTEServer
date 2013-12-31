@@ -69,11 +69,9 @@
 			if ($query->num_rows() > 0) {
 				$players = $query->first_row()->name;
 				$query->free_result();
-
 				return explode(",", $players);
 			} else {
 				$query->free_result();
-
 				return array();
 			}
 		}

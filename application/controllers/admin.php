@@ -78,12 +78,8 @@
 				// load the data from file
 				$data = $this->tps_model->read_tick_data($server, $type);
 				$tps = $this->tps_model->get_tps($server, $type);
-				$playerString = $this->tps_model->get_players($tps ["id"]);
-				if ($playerString != "") {
-					$players = implode(",", $playerString);
-				} else {
-					$players = array();
-				}
+				$playerArray = $this->tps_model->get_players($tps ["id"]);
+				$players = implode(",", $playerArray);
 
 				if ($data == "") {
 					$array = array(array(), array(), array(), array(), array());
@@ -154,7 +150,7 @@
 				$data = array(
 					"entities"    => $entityArray, "chunks" => $chunkArray, "types" => $typeArray,
 					"calls"       => $callArray, "tps" => $tps ["tps"], "last_update" => $tps ["last_update"],
-					"players"     => $players, "playerCount" => count(explode(",", $players)),
+					"players"     => $players, "playerCount" => count($playerArray),
 					"script"      => "admin/view_board_scripts", "body" => "admin/view_board"
 				);
 
