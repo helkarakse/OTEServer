@@ -41,6 +41,9 @@
 			</li>
 		</ul>
 	</div>
+	<div id="footer">
+		Page rendered in {elapsed_time} seconds. (c) Helkarakse 2013
+	</div>
 </div>
 </body>
 </html>
