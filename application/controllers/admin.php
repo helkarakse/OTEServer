@@ -98,9 +98,9 @@
 					preg_match("/^(.*)\s(.*),(.*),(.*):(.*)/", $entity["Single Entity"], $matches);
 					// only create dynmap url if dimension is 0
 					if ($matches[5] == 0) {
-						$dynmap_url = $dynmap_url . "?worldname=world&mapname=flat&zoom=4&x={$matches[2]}&y={$matches[3]}&z={$matches[4]}";
+						$url = $dynmap_url . "?worldname=world&mapname=flat&zoom=4&x={$matches[2]}&y={$matches[3]}&z={$matches[4]}";
 					} else {
-						$dynmap_url = "";
+						$url = "";
 					}
 
 					// make the position string regardless
@@ -108,7 +108,7 @@
 
 					$entity["name"] = $matches[1];
 					$entity["position"] = $position;
-					$entity["dynmap_url"] = $dynmap_url;
+					$entity["dynmap_url"] = $url;
 					$tmpArray[] = $entity;
 				}
 
@@ -125,14 +125,14 @@
 
 						// only create dynmap url if dimension is 0
 						if ($matches[1] == 0) {
-							$dynmap_url = $dynmap_url . "?worldname=world&mapname=flat&zoom=4&x={$chunkX}&y=0&z={$chunkZ}";
+							$url = $dynmap_url . "?worldname=world&mapname=flat&zoom=4&x={$chunkX}&y=0&z={$chunkZ}";
 						} else {
-							$dynmap_url = "";
+							$url = "";
 						}
 
 						$chunk["Chunk"] = $matches[2] . ", " . $matches[3];
 						$chunk["position"] = $chunkX . ", " . $chunkZ;
-						$chunk["dynmap_url"] = $dynmap_url;
+						$chunk["dynmap_url"] = $url;
 					} else {
 						// ftb server is 1.5, no chunk dim
 						preg_match("/^(.*),\s(.*)/", $chunk["Chunk"], $matches);
