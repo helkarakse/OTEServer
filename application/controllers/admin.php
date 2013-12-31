@@ -45,13 +45,13 @@
 				$data = array(
 					"Resonant Rise 1"    => array(
 						"tps"   => $this->tps_model->get_tps("rr", "1")["tps"],
-						"count" => count($this->tps_model->get_players($this->tps_model->get_tps("rr", "1")["rowid"]))
+						"count" => count($this->tps_model->get_players($this->tps_model->get_tps("rr", "1")["id"]))
 					), "Resonant Rise 2" => array(
 						"tps"   => $this->tps_model->get_tps("rr", "2")["tps"],
-						"count" => count($this->tps_model->get_players($this->tps_model->get_tps("rr", "2")["rowid"]))
+						"count" => count($this->tps_model->get_players($this->tps_model->get_tps("rr", "2")["id"]))
 					), "FTB Unleashed"   => array(
 						"tps"   => $this->tps_model->get_tps("ftb", "unleashed")["tps"],
-						"count" => count($this->tps_model->get_players($this->tps_model->get_tps("ftb", "unleashed")["rowid"]))
+						"count" => count($this->tps_model->get_players($this->tps_model->get_tps("ftb", "unleashed")["id"]))
 					)
 				);
 
@@ -78,7 +78,7 @@
 				// load the data from file
 				$data = $this->tps_model->read_tick_data($server, $type);
 				$tps = $this->tps_model->get_tps($server, $type);
-				$players = implode(",", $this->tps_model->get_players($tps ["rowid"]));
+				$players = implode(",", $this->tps_model->get_players($tps ["id"]));
 
 				if ($data == "") {
 					$array = array(array(), array(), array(), array(), array());
