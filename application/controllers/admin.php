@@ -41,7 +41,6 @@
 
 		public function main() {
 			if ($this->session->userdata("is_logged_in")) {
-				$this->load->model("tps_model");
 				$data = array(
 					"Resonant Rise 1"    => array(
 						"tps"   => $this->tps_model->get_tps("rr", "1")["tps"],
@@ -63,7 +62,6 @@
 
 		public function board() {
 			if ($this->session->userdata("is_logged_in")) {
-				$this->load->model("tps_model");
 				$server = $this->input->get("server");
 				$type = $this->input->get("type");
 
@@ -162,7 +160,6 @@
 
 		public function graph() {
 			if ($this->session->userdata("is_logged_in")) {
-				$this->load->model("tps_model");
 				$server = $this->input->get("server");
 				$type = $this->input->get("type");
 				$limit = $this->input->get("limit");

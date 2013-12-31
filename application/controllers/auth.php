@@ -5,7 +5,6 @@
 
 	class Auth extends CI_Controller {
 		function get_auth() {
-			$this->load->model("auth_model");
 			$username = $this->input->get_post("name");
 			if (! empty($username)) {
 				output_json($this->auth_model->get_auth($username), TRUE);
@@ -15,12 +14,10 @@
 		}
 
 		function get_auth_package() {
-			$this->load->model("auth_model");
 			output_json($this->auth_model->get_all_auth(), TRUE);
 		}
 
 		function set_auth() {
-			$this->load->model("auth_model");
 			$username = $this->input->get_post("name");
 			$level = $this->input->get_post("level");
 			if (! empty($username) && ! empty($level)) {
@@ -33,7 +30,6 @@
 		}
 
 		function delete_user() {
-			$this->load->model("auth_model");
 			$username = $this->input->get_post("name");
 			if (! empty($username)) {
 				$this->auth_model->delete_auth($username);
@@ -44,7 +40,6 @@
 		}
 
 		function add_user() {
-			$this->load->model("auth_model");
 			$username = $this->input->get_post("name");
 			$level = $this->input->get_post("level");
 			if (! empty($username) && ! empty($level)) {

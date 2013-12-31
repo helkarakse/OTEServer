@@ -6,7 +6,6 @@
 
 		// upload/put/server/type
 		public function put() {
-			$this->load->model("tps_model");
 			$server = $this->input->get("server");
 			$type = $this->input->get("type");
 			$timeNow = time();
@@ -36,12 +35,9 @@
 		}
 
 		public function get() {
-			$this->load->model("tps_model");
 			$server = $this->input->get("server");
 			$type = $this->input->get("type");
-
 			$string = $this->tps_model->read_tick_data($server, $type);
-
 			echo($string);
 		}
 	}

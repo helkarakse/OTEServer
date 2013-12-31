@@ -5,7 +5,6 @@
 
 	class Ticket extends CI_Controller {
 		function get_user_tickets() {
-			$this->load->model("ticket_model");
 			$username = $this->input->get_post("name");
 			if (! empty($username)) {
 				$output = array();
@@ -24,7 +23,6 @@
 		}
 
 		function get_user_ticket_count() {
-			$this->load->model("ticket_model");
 			$username = $this->input->get_post("name");
 			if (! empty($username)) {
 				output_json($this->ticket_model->get_user_ticket_count($username), TRUE);
@@ -35,7 +33,6 @@
 
 		// adds a new ticket to the db
 		function add_ticket() {
-			$this->load->model("ticket_model");
 			$creator = $this->input->get_post("creator");
 			$description = $this->input->get_post("description");
 			$position = $this->input->get_post("position");
