@@ -78,7 +78,12 @@
 				// load the data from file
 				$data = $this->tps_model->read_tick_data($server, $type);
 				$tps = $this->tps_model->get_tps($server, $type);
-				$players = implode(",", $this->tps_model->get_players($tps ["id"]));
+				$playerString = $this->tps_model->get_players($tps ["id"]);
+				if ($playerString != "") {
+					$players = implode(",", $playerString);
+				} else {
+					$players = array();
+				}
 
 				if ($data == "") {
 					$array = array(array(), array(), array(), array(), array());
