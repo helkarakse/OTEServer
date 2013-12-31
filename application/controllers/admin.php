@@ -194,4 +194,14 @@
 				redirect(site_url(array("c" => "admin")));
 			}
 		}
+
+		public function log_viewer() {
+			if ($this->session->userdata("is_logged_in")) {
+				$server = $this->input->get("server");
+				$type = $this->input->get("type");
+				$log_type = $this->input->get("log_type");
+			} else {
+				redirect(site_url(array("c" => "admin")));
+			}
+		}
 	}
