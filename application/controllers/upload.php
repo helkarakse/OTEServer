@@ -32,7 +32,7 @@
 			// save the json to file
 			$this->tps_model->write_tick_data($text, $server, $type);
 
-			echo("Updated at: " . $timeNow);
+			echo("Updated at: " . date("r", $timeNow));
 		}
 
 		public function get() {
