@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://dev.otegamers.com/dev/';
+$config['base_url']	= 'http://dev.otegamers.com/helkarakse/';
 
 /*
 |--------------------------------------------------------------------------
