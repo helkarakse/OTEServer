@@ -1,6 +1,7 @@
-/*.buildpath
-/*.project
-/*.idea
-/LICENSE
-/README.md
-/*.log.gz
+*.buildpath
+*.project
+*.idea
+LICENSE
+README.md
+*.log.gz
+*-server.txt
