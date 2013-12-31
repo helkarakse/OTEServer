@@ -8,12 +8,12 @@
 
 		// returns the tps data from the db
 		function get_tps($server, $type) {
-			$this->db->select("rowid, tps, last_update");
+			$this->db->select("id, tps, last_update");
 			$this->db->from("TickTps");
 			$this->db->where(array(
 				"server" => $server, "type" => $type
 			));
-			$this->db->order_by("rowid", "desc");
+			$this->db->order_by("id", "desc");
 			$this->db->limit(1);
 			$query = $this->db->get();
 
@@ -28,13 +28,13 @@
 				$query->free_result();
 
 				return array(
-					"rowid" => $row->rowid, "tps" => $tps, "last_update" => $row->last_update
+					"id" => $row->id, "tps" => $tps, "last_update" => date("r", $row->last_update)
 				);
 			} else {
 				$query->free_result();
 
 				return array(
-					"rowid" => 0, "tps" => 0, "last_update" => ""
+					"id" => 0, "tps" => 0, "last_update" => ""
 				);
 			}
 		}
@@ -48,26 +48,21 @@
 			return $this->db->insert_id();
 		}
 
-		function insert_players($rowId, $players) {
+		function insert_players($id, $players) {
 			if (! empty ($players)) {
 				$string = implode(', ', $players);
 				$this->db->insert("TickPlayers", array(
-					"tick_id" => $rowId, "name" => $string
+					"tick_id" => $id, "name" => $string
 				));
-				// foreach ( $players as $player ) {
-				// $this->db->insert ( "TickPlayers", array (
-				// "tick_id" => $rowId,"name" => $player
-				// ) );
-				// }
 			}
 		}
 
-		// returns an array of players for rowid
-		function get_players($rowId) {
+		// returns an array of players for id
+		function get_players($id) {
 			$this->db->select("name");
 			$this->db->from("TickPlayers");
 			$this->db->where(array(
-				"tick_id" => $rowId
+				"tick_id" => $id
 			));
 			$query = $this->db->get();
 
@@ -88,22 +83,23 @@
 			$returnArray = array();
 
 			// get the tps data
-			$this->db->select("rowid, tps, last_update");
+			$this->db->select("id, tps, last_update");
 			$this->db->from("TickTps");
 			$this->db->where(array(
 				"server" => $server, "type" => $type
 			));
 			if ($limit != FALSE) {
-				$this->db->order_by("rowid", "desc");
+				$this->db->order_by("id", "desc");
 				$this->db->limit($limit);
 			}
 			$query = $this->db->get();
 
 			if ($query->num_rows() > 0) {
 				foreach ($query->result() as $row) {
-					$playerArray = $this->get_players($row->rowid);
+					$playerArray = $this->get_players($row->id);
 					$returnArray [] = array(
-						"last_update" => $row->last_update, "tps" => $row->tps, "count" => count($playerArray)
+						"last_update" => date("r", $row->last_update), "tps" => $row->tps,
+						"count"       => count($playerArray)
 					);
 				}
 				$query->free_result();
