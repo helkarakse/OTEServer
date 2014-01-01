@@ -21,21 +21,23 @@
 			<li class="menuLink" display="server"><a href="#">Server Logs</a></li>
 		</ul>
 	</div>
-	<div></div>
+	<br/>
+
 	<div class='tableCSS' id='crash'>
 		<table>
 			<tr>
 				<td>File</td>
 				<td>Date</td>
 				<td></td>
-				<td></td>
 			</tr>
 			<?php foreach ($files as $file): ?>
 				<tr>
-					<td><?php echo $file["name"]; ?></td>
+					<td><a href="<?php echo site_url(array(
+							"c"        => "admin", "m" => "log_viewer", "server" => $server, "type" => $type,
+							"log_type" => $log_type, "log_file" => $file["name"]
+						)); ?>"><?php echo $file["name"]; ?></a></td>
 					<td>Sample Date</td>
 					<td>Pastebin</td>
-					<td>Link</td>
 				</tr>
 			<?php endforeach; ?>
 		</table>
