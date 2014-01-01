@@ -1,4 +1,4 @@
-<script type="text/javascript" src="./js/tick_board.js"></script>
+<script type="text/javascript" src="./js/log_viewer.js"></script>
 <div id="nav">
 	<ul id="menu">
 		<li><a href="<?php echo site_url(array(
