@@ -218,7 +218,9 @@
 						"type" => $type, "log_type" => $log_type
 					));
 				} else {
-
+					// log file passed, display the file itself
+					$string = read_file($directory . "/" . $log_file);
+					$this->load->view("admin/view_template", array("body" => "admin/view_log_file", "log" => $string));
 				}
 			} else {
 				redirect(site_url(array("c" => "admin")));
