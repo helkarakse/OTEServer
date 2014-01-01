@@ -13,7 +13,7 @@
 			)); ?>">FTB Unleashed</a></li>
 	</ul>
 </div>
-<div id="main">
+<div id="main_log">
 	<p>
 		<?php echo $log; ?>
 	</p>

@@ -60,6 +60,13 @@ h1 {
 	background: #fff;
 }
 
+#main_log {
+	float: right;
+	width: 880px;
+	padding: 10px;
+	background: #fff;
+}
+
 h2 {
 	margin: 0 0 1em;
 }
