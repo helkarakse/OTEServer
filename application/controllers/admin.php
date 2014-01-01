@@ -200,6 +200,15 @@
 				$server = $this->input->get("server");
 				$type = $this->input->get("type");
 				$log_type = $this->input->get("log_type");
+				$log_file = $this->input->get("log_file");
+				if (empty($log_file)) {
+					// no log file passed, assume directory display
+					$directory = $this->log_model->get_directory($server, $type, $log_type);
+					$fileArray = get_filenames($directory, TRUE);
+					$this->load->view("admin/view_template", array(
+						"body" => "admin/view_log_directory", "files" => $fileArray
+					));
+				}
 			} else {
 				redirect(site_url(array("c" => "admin")));
 			}
