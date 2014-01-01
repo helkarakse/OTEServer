@@ -205,13 +205,14 @@
 					// no log file passed, assume directory display
 					$directory = $this->log_model->get_directory($server, $type, $log_type);
 					$fileArray = get_filenames($directory, TRUE);
+					asort($fileArray);
 
 					$tempArray = array();
 					foreach ($fileArray as $file) {
 						$tempArray[] = array("path" => $file, "name" => basename($file));
 					}
 					$fileArray = $tempArray;
-					
+
 					$this->load->view("admin/view_template", array(
 						"body" => "admin/view_log_directory", "files" => $fileArray
 					));
