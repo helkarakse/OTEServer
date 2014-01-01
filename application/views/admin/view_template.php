@@ -34,7 +34,9 @@
 				)); ?>">TPS Graph</a>
 			</li>
 			<li>
-				<a href ="#">Server Logs</a>
+				<a href="<?php echo site_url(array(
+					"c" => "admin", "m" => "log_viewer", "server" => "rr", "type" => "1", "log_type" => "crash"
+				)); ?>">Server Logs</a>
 			</li>
 			<li>
 				<a href="<?php echo site_url(array("c" => "admin", "m" => "logout")); ?>">Logout</a>
