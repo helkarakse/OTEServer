@@ -204,12 +204,17 @@
 				if (empty($log_file)) {
 					// no log file passed, assume directory display
 					$directory = $this->log_model->get_directory($server, $type, $log_type);
-					$fileArray = get_filenames($directory, TRUE);
+					$fileArray = get_filenames($directory);
 					arsort($fileArray);
 
 					$tempArray = array();
 					foreach ($fileArray as $file) {
-						$tempArray[] = array("path" => $file, "name" => basename($file));
+						preg_match("/^crash-(.*)-(.*)-(.*)_(.*)\.(.*)\.(.*)-server.txt/", $file, $matches);
+						$timestamp = mktime($matches[4], $matches[5], $matches[6], $matches[2], $matches[3], $matches[1]);
+						$tempArray[] = array(
+							"name" => $file,
+							"date" => $matches[3] . "/" . $matches[2] . "/" . $matches[1] . " " . $matches[4] . ":" . $matches[5] . ":" . $matches[6]
+						);
 					}
 					$fileArray = $tempArray;
 
@@ -226,5 +231,12 @@
 			} else {
 				redirect(site_url(array("c" => "admin")));
 			}
+		}
+
+		// testing function
+		public function query() {
+			$this->load->library("query");
+			$status = $this->query->getStatus("rr1.otegamers.com", 25565);
+			print_r($status);
 		}
 	}

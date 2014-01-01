@@ -6,7 +6,7 @@
 	 * @license   Free to use but dont remove the author, license and copyright
 	 * @copyright © 2013 Julian Spravil
 	 */
-	class ServerQuery {
+	class Query {
 		private $timeout;
 
 		/**
