@@ -67,6 +67,10 @@ h1 {
 	background: #fff;
 }
 
+.mainText {
+	float: left;
+}
+
 h2 {
 	margin: 0 0 1em;
 }
