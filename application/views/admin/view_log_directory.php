@@ -21,7 +21,8 @@
 			<li class="menuLink" display="server"><a href="#">Server Logs</a></li>
 		</ul>
 	</div>
-	<br/>
+	<div class="mainText">
+	</div>
 
 	<div class='tableCSS' id='crash'>
 		<table>
