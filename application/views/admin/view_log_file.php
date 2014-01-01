@@ -15,5 +15,7 @@
 	</ul>
 </div>
 <div id="main">
-	<?php echo $log; ?>
+	<p>
+		<?php echo $log; ?>
+	</p>
 </div>
