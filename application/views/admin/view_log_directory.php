@@ -21,18 +21,21 @@
 			<li class="menuLink" display="server"><a href="#">Server Logs</a></li>
 		</ul>
 	</div>
+	<div></div>
 	<div class='tableCSS' id='crash'>
 		<table>
 			<tr>
 				<td>File</td>
 				<td>Date</td>
-				<td>Link</td>
+				<td></td>
+				<td></td>
 			</tr>
 			<?php foreach ($files as $file): ?>
 				<tr>
-					<td><?php echo $file; ?></td>
-					<td></td>
-					<td>></td>
+					<td><?php echo $file["name"]; ?></td>
+					<td>Sample Date</td>
+					<td>Pastebin</td>
+					<td>Link</td>
 				</tr>
 			<?php endforeach; ?>
 		</table>
