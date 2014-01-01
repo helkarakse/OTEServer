@@ -219,6 +219,7 @@
 					));
 				} else {
 					// log file passed, display the file itself
+					$directory = $this->log_model->get_directory($server, $type, $log_type);
 					$string = read_file($directory . "/" . $log_file);
 					$this->load->view("admin/view_template", array("body" => "admin/view_log_file", "log" => $string));
 				}
