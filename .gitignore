@@ -1,10 +1,8 @@
-*.buildpath
-*.project
-*.idea
-LICENSE
-README.md
-*.log.gz
-*-server.txt
+/bootstrap/compiled.php
+/vendor
+composer.phar
+composer.lock
+.DS_Store
+Thumbs.db
 /phpmyadmin
-*.ico
-*.settings
+/*.idea
